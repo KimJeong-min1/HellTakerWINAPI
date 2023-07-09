@@ -16,26 +16,16 @@ namespace jm
 		void Run();
 		void Update();
 		void Render();
-		void MoveFunc1(int _Rand1, int _Rand2, int _Max);
-		void MoveFunc2(int _Rand1, int _Rand2, int _Max);
-
+	
 	private:
 		HWND mHwnd;
 		HDC mHdc;
-		HDC mBackHdc;
 
 		UINT mWidth;
 		UINT mHeight;
 
+		HDC mBackHdc;
 		HBITMAP mBackBuffer;
-
-		float PlayerSpeed;
-		float m_Time;
-
-		bool m_able;
-
-		Vector2 mPlayerPos;
-		Vector2 mPlayerPos2;
 	};
 }
 

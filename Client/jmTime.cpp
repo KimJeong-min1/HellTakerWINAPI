@@ -1,4 +1,4 @@
-#include "Time.h"
+#include "jmTime.h"
 
 namespace jm
 {
@@ -43,13 +43,9 @@ namespace jm
 
 			swprintf_s(szFloat, 50, L"FPS : %f", fps);
 			int strLen = wcsnlen_s(szFloat, 50);
-
 			TextOut(hdc, 10, 10, szFloat, strLen);
-
 			timecheck = 0.0f;
 		}
-
-
 
 	}
 

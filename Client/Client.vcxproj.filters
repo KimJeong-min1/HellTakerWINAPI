@@ -15,8 +15,20 @@
     <Filter Include="Engine">
       <UniqueIdentifier>{d761c078-7d4b-48cf-b776-191ac092f63e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\GameObject">
+      <UniqueIdentifier>{6f86b4e6-b7f0-4f12-b557-912b415f3397}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Engine\Common">
       <UniqueIdentifier>{c62476ef-0f69-43f7-a5b0-8aabeaa9d21c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component">
+      <UniqueIdentifier>{17f2f673-34a7-4f23-98bc-9d9a5824e958}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\Transform">
+      <UniqueIdentifier>{5e60d8a5-0801-4f15-95a7-24fbdfcbf238}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Entity">
+      <UniqueIdentifier>{caada6b0-1b13-4448-a92a-4b4d8ad433ed}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\High Level interface">
       <UniqueIdentifier>{f1f486a8-fbde-4991-9b08-721947be1c11}</UniqueIdentifier>
@@ -27,8 +39,26 @@
     <Filter Include="Engine\Random">
       <UniqueIdentifier>{6926fa47-73b5-4741-b41c-dfac4dbd5054}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Time">
+    <Filter Include="Engine\Layer">
+      <UniqueIdentifier>{524b02ee-11b2-4d63-848e-86493f1976fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene">
+      <UniqueIdentifier>{bbb6b2f9-c196-4d7b-a8fc-31abe4b9c983}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Common\Time">
       <UniqueIdentifier>{57b6f330-70b1-46a0-b4e0-3027eef75785}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{6bc758ed-0a17-420b-b41d-6dc69fe6e4fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene">
+      <UniqueIdentifier>{2635b6c3-ca78-4b78-81b1-53cd58b622ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject">
+      <UniqueIdentifier>{38981411-7f9b-4d21-81cd-4524bd2f9f55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Player">
+      <UniqueIdentifier>{b91b2f38-a30a-4d63-84f1-ede4a1d5add1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -59,8 +89,41 @@
     <ClInclude Include="jmrand.h">
       <Filter>Engine\Random</Filter>
     </ClInclude>
-    <ClInclude Include="Time.h">
-      <Filter>Engine\Time</Filter>
+    <ClInclude Include="jmTime.h">
+      <Filter>Engine\Common\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="jmEntity.h">
+      <Filter>Engine\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="jmGameObject.h">
+      <Filter>Engine\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="jmLayer.h">
+      <Filter>Engine\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="jmComponent.h">
+      <Filter>Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="jmSpriteRenderer.h">
+      <Filter>Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="jmTransform.h">
+      <Filter>Engine\Component\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="jmScene.h">
+      <Filter>Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="jmPlayer.h">
+      <Filter>Contents\GameObject\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="jmTitleScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="jmSceneManager.h">
+      <Filter>Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="jmObject.h">
+      <Filter>Engine\GameObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -87,8 +150,38 @@
     <ClCompile Include="jmrand.cpp">
       <Filter>Engine\Random</Filter>
     </ClCompile>
-    <ClCompile Include="Time.cpp">
-      <Filter>Engine\Time</Filter>
+    <ClCompile Include="jmTime.cpp">
+      <Filter>Engine\Common\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="jmEntity.cpp">
+      <Filter>Engine\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="jmGameObject.cpp">
+      <Filter>Engine\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="jmLayer.cpp">
+      <Filter>Engine\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="jmComponent.cpp">
+      <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="jmSpriteRenderer.cpp">
+      <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="jmTransform.cpp">
+      <Filter>Engine\Component\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="jmScene.cpp">
+      <Filter>Engine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="jmPlayer.cpp">
+      <Filter>Contents\GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="jmTitleScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="jmSceneManager.cpp">
+      <Filter>Engine\Scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

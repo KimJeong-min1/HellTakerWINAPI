@@ -134,20 +134,41 @@
     <ClInclude Include="Client.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="jmApplication.h" />
+    <ClInclude Include="jmComponent.h" />
+    <ClInclude Include="jmEntity.h" />
+    <ClInclude Include="jmGameObject.h" />
     <ClInclude Include="jmInput.h" />
+    <ClInclude Include="jmLayer.h" />
+    <ClInclude Include="jmPlayer.h" />
     <ClInclude Include="jmrand.h" />
+    <ClInclude Include="jmSceneManager.h" />
+    <ClInclude Include="jmSpriteRenderer.h" />
+    <ClInclude Include="jmTitleScene.h" />
+    <ClInclude Include="jmTransform.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="jmScene.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Commoninclude.h" />
     <ClInclude Include="jmMath.h" />
-    <ClInclude Include="Time.h" />
+    <ClInclude Include="jmTime.h" />
+    <ClInclude Include="jmObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="jmApplication.cpp" />
+    <ClCompile Include="jmComponent.cpp" />
+    <ClCompile Include="jmEntity.cpp" />
+    <ClCompile Include="jmGameObject.cpp" />
     <ClCompile Include="jmInput.cpp" />
+    <ClCompile Include="jmLayer.cpp" />
+    <ClCompile Include="jmPlayer.cpp" />
     <ClCompile Include="jmrand.cpp" />
-    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="jmSceneManager.cpp" />
+    <ClCompile Include="jmSpriteRenderer.cpp" />
+    <ClCompile Include="jmTitleScene.cpp" />
+    <ClCompile Include="jmTransform.cpp" />
+    <ClCompile Include="jmScene.cpp" />
+    <ClCompile Include="jmTime.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc" />

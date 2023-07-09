@@ -1,22 +1,21 @@
 #include "jmApplication.h"
 #include "jmInput.h"
-#include "Time.h"
+#include "jmTime.h"
 #include "jmrand.h"
+#include "jmTitleScene.h"
+#include "jmSceneManager.h"
 
 namespace jm
 {
 	// 생성자
 	Application::Application()
 		// 리터럴 라이즈 초기화
-		:mHwnd(NULL)
-		, mHdc(NULL)
-		, PlayerSpeed(600.f)
-		, m_Time(3.f)
-		, m_able(false)
-		, mWidth(0)
-		, mHeight(0)
-		, mBackBuffer(NULL)
-		, mBackHdc(NULL)
+		:mHwnd(NULL) // 나의 윈도우즈 핸들
+		, mHdc(NULL) // 출력에 필요한 정보를 가지는 데이터 구조,좌표 등 정보를 저장하는 데이터 구조체의 위치를 알기 위한 핸들 
+		, mWidth(0) // 가로
+		, mHeight(0) // 세로
+		, mBackBuffer(NULL) // 뒤에서 데이터를 보관해주는 변수?
+		, mBackHdc(NULL) // 뒤에서 필요한 정보를 저장하는 데이터 구조체의 위치를 알기 위한 핸들
 	{
 	}
 
@@ -28,19 +27,22 @@ namespace jm
 	// 초기화 해주는 함수
 	void Application::Initialize(HWND hwnd)
 	{
+		// main에 윈도우핸들을 나의 윈도우핸들에 대입
 		mHwnd = hwnd;
+		// 나의 윈도우핸들에 데이터 구조체 위치를 알기 위한 나의 핸들에 대입
 		mHdc = GetDC(mHwnd);
+		// 가로 값 대입
 		mWidth = 1600;
+		// 세로 값 대입
 		mHeight = 900;
-		mPlayerPos.x = 50.f;
-		mPlayerPos.y = 50.f;
-		mPlayerPos2.x = 50.f;
-		mPlayerPos2.y = 50.f;
+		// RECT class 는 상하좌우 기준을 바탕으로 사각형을 만드는 함수
 		RECT rect = { 0, 0, mWidth, mHeight };
+		// 윈도우의 스타일(타이틀 바의 유무, 타이틀 바의 높이, 경계선의 두께)와 메뉴의 존재 여부 등을 고려하여 작업 영역의 크기를
+		// 정하는 함수
 		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
-
+		// 윈도우를 어떤 위치에 생성하게 해주는 함수
 		SetWindowPos(mHwnd, nullptr, 0, 0, rect.right - rect.left, rect.bottom - rect.top, 0);
-
+		// 윈도우를 표시하는 방법을 제어하는 함수
 		ShowWindow(mHwnd, true);
 
 		// 윈도우 해상도와 동일한 비트맵 생성
@@ -49,114 +51,49 @@ namespace jm
 		mBackHdc = CreateCompatibleDC(mHdc);
 		// 새로 생성한 비트맵과 DC를 서로 연결
 		HBITMAP defalutBitmap = (HBITMAP)SelectObject(mBackHdc, mBackBuffer);
+		// 삭제
 		DeleteObject(defalutBitmap);
 
+		// Time 클래스 초기화
 		Time::Initialize();
+		// Input 클래스 초기화
 		Input::Initialize();
+
+		SceneManager::Initialize();
 	}
 
 	// 함수를 실행시켜주는 함수
 	void Application::Run()
 	{
+		// 업데이트 해주는 함수
 		Update();
+		// 그려주는 함수
 		Render();
 	}
 
 	// 업데이트 해주는 함수
 	void Application::Update()
 	{
-		RanDom r;
-		int ran1 = r.nextInRange(0, 15);
-		int ran2 = r.nextInRange(0, 15);
+		// Input 클래스 업데이트 해주는 함수
 		Input::Update();
+		// Time 클래스 업데이트 해주는 함수
 		Time::Update();
-		MoveFunc1(ran1, ran2, 8);
-
-		if (m_Time >= 0)
-		{
-			m_Time -= Time::DeltaTime();
-		}
-		else if (m_able == false)
-		{
-			m_able = true;
-		}
-
-		if (m_able == true)
-		{
-			int ran3 = r.nextInRange(0, 15);
-			int ran4 = r.nextInRange(0, 15);
-			MoveFunc2(ran3, ran4, 8);
-		}
+		// Scene 을 업데이트 해주는 함수
+		SceneManager::Update();
 	}
 
-	// 원을 그려주는 함수
+	// 객체를 그려주는 함수
 	void Application::Render()
 	{
 		//Rectangle(mhdc, 100, 100, 200, 200);
 
-
+		// 프레임 계산을 윈도우에 그려주는 함수
 		Time::Render(mBackHdc);
-
+		// 화면 전체를 흰색으로 그려주는 함수
 		Rectangle(mBackHdc, -1, -1, mWidth + 1, mHeight + 1);
-
-		Ellipse(mBackHdc, -50.f + mPlayerPos.x, -50.f + mPlayerPos.y, 50.f + mPlayerPos.x, 50.f + mPlayerPos.y);
-
-		if (m_able == true)
-		{
-			Time::Render(mBackHdc);
-			Ellipse(mBackHdc, -50.f + mPlayerPos2.x, -50.f + mPlayerPos2.y, 50.f + mPlayerPos2.x, 50.f + mPlayerPos2.y);
-		}
-
+		// 씬매니저 클래스를 통해서 그림을 그려준다
+		SceneManager::Render(mBackHdc);
+		// Scene 안에 그려진 객체를 mHdc에 그림을 복사해주는 함수
 		BitBlt(mHdc, 0, 0, mWidth, mHeight, mBackHdc, 0, 0, SRCCOPY);
-	}
-
-	// 첫번째 원의 위치를 랜덤적으로 바꿔주는 함수
-	void Application::MoveFunc1(int _Rand1, int _Rand2, int _Max)
-	{
-		float RatioX = (float)_Rand1 / (float)_Max - 1;
-		float RatioY = (float)_Rand2 / (float)_Max - 1;
-		if (mPlayerPos.x - 50.f < 0)
-		{
-			mPlayerPos.x += PlayerSpeed * Time::DeltaTime() * 1;
-		}
-		if (mPlayerPos.x + 50.f > 1584)
-		{
-			mPlayerPos.x -= PlayerSpeed * Time::DeltaTime() * 1;
-		}
-		if (mPlayerPos.y - 50.f < 0)
-		{
-			mPlayerPos.y += PlayerSpeed * Time::DeltaTime() * 1;
-		}
-		if (mPlayerPos.y + 50.f > 842)
-		{
-			mPlayerPos.y -= PlayerSpeed * Time::DeltaTime() * 1;
-		}
-		mPlayerPos.x += PlayerSpeed * Time::DeltaTime() * RatioX;
-		mPlayerPos.y += PlayerSpeed * Time::DeltaTime() * RatioY;
-	}
-
-	// 두번째 원의 위치를 랜덤적으로 바꿔주는 함수
-	void Application::MoveFunc2(int _Rand1, int _Rand2, int _Max)
-	{
-		float RatioX = (float)_Rand1 / (float)_Max - 1;
-		float RatioY = (float)_Rand2 / (float)_Max - 1;
-		if (mPlayerPos2.x - 50.f < 0)
-		{
-			mPlayerPos2.x += PlayerSpeed * Time::DeltaTime() * 1;
-		}
-		if (mPlayerPos2.x + 50.f > 1584)
-		{
-			mPlayerPos2.x -= PlayerSpeed * Time::DeltaTime() * 1;
-		}
-		if (mPlayerPos2.y - 50.f < 0)
-		{
-			mPlayerPos2.y += PlayerSpeed * Time::DeltaTime() * 1;
-		}
-		if (mPlayerPos2.y + 50.f > 842)
-		{
-			mPlayerPos2.y -= PlayerSpeed * Time::DeltaTime() * 1;
-		}
-		mPlayerPos2.x += PlayerSpeed * Time::DeltaTime() * RatioX;
-		mPlayerPos2.y += PlayerSpeed * Time::DeltaTime() * RatioY;
 	}
 }
