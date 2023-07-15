@@ -86,13 +86,19 @@ namespace jm
 	void Application::Render()
 	{
 		//Rectangle(mhdc, 100, 100, 200, 200);
+		HBRUSH brush = CreateSolidBrush(RGB(125, 125, 125));
+		HBRUSH oldBrush = (HBRUSH)SelectObject(mBackHdc, brush);
+		// 화면 전체를 흰색으로 그려주는 함수
+		Rectangle(mBackHdc, -1, -1, mWidth + 1, mHeight + 1);
+		SelectObject(mBackHdc, oldBrush);
+		DeleteObject(brush);
 
 		// 프레임 계산을 윈도우에 그려주는 함수
 		Time::Render(mBackHdc);
-		// 화면 전체를 흰색으로 그려주는 함수
-		Rectangle(mBackHdc, -1, -1, mWidth + 1, mHeight + 1);
+		
 		// 씬매니저 클래스를 통해서 그림을 그려준다
 		SceneManager::Render(mBackHdc);
+		
 		// Scene 안에 그려진 객체를 mHdc에 그림을 복사해주는 함수
 		BitBlt(mHdc, 0, 0, mWidth, mHeight, mBackHdc, 0, 0, SRCCOPY);
 	}

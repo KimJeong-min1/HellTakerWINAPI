@@ -5,9 +5,13 @@
 #include <set>
 #include <functional>
 #include <string>
+#include <filesystem>
 
 #include "framework.h"
 #include "jmMath.h"
+
+#pragma comment(lib, "Msimg32.lib")
+
 
 
 namespace jm::enums
@@ -29,6 +33,8 @@ namespace jm::enums
 	{
 		Transform,
 		SpriteRenderer,
+		Animation,
+		Animator,
 		End
 	};
 }

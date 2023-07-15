@@ -1,5 +1,6 @@
 #pragma once
 #include "jmScene.h"
+#include "jmComponent.h"
 
 namespace jm
 {

@@ -81,6 +81,11 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -98,6 +103,11 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -111,6 +121,11 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -128,23 +143,41 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Client.h" />
+    <ClInclude Include="jmAnimation.h" />
+    <ClInclude Include="jmAnimator.h" />
+    <ClInclude Include="jmDevil.h" />
+    <ClInclude Include="jmEndingScene.h" />
+    <ClInclude Include="jmCutScene.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="jmApplication.h" />
+    <ClInclude Include="jmBackGround.h" />
     <ClInclude Include="jmComponent.h" />
     <ClInclude Include="jmEntity.h" />
     <ClInclude Include="jmGameObject.h" />
+    <ClInclude Include="jmTexture.h" />
     <ClInclude Include="jmInput.h" />
     <ClInclude Include="jmLayer.h" />
+    <ClInclude Include="jmMonster.h" />
     <ClInclude Include="jmPlayer.h" />
     <ClInclude Include="jmrand.h" />
+    <ClInclude Include="jmResource.h" />
+    <ClInclude Include="jmResources.h" />
     <ClInclude Include="jmSceneManager.h" />
     <ClInclude Include="jmSpriteRenderer.h" />
+    <ClInclude Include="jmText.h" />
     <ClInclude Include="jmTitleScene.h" />
     <ClInclude Include="jmTransform.h" />
+    <ClInclude Include="jmPlayScene.h" />
+    <ClInclude Include="jmUI.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="jmScene.h" />
     <ClInclude Include="targetver.h" />
@@ -155,20 +188,34 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp" />
+    <ClCompile Include="jmAnimation.cpp" />
+    <ClCompile Include="jmAnimator.cpp" />
+    <ClCompile Include="jmDevil.cpp" />
+    <ClCompile Include="jmEndingScene.cpp" />
+    <ClCompile Include="jmCutScene.cpp" />
     <ClCompile Include="jmApplication.cpp" />
+    <ClCompile Include="jmBackGround.cpp" />
     <ClCompile Include="jmComponent.cpp" />
     <ClCompile Include="jmEntity.cpp" />
     <ClCompile Include="jmGameObject.cpp" />
+    <ClCompile Include="jmTexture.cpp" />
     <ClCompile Include="jmInput.cpp" />
     <ClCompile Include="jmLayer.cpp" />
+    <ClCompile Include="jmMath.cpp" />
+    <ClCompile Include="jmMonster.cpp" />
     <ClCompile Include="jmPlayer.cpp" />
     <ClCompile Include="jmrand.cpp" />
+    <ClCompile Include="jmResource.cpp" />
+    <ClCompile Include="jmResources.cpp" />
     <ClCompile Include="jmSceneManager.cpp" />
     <ClCompile Include="jmSpriteRenderer.cpp" />
+    <ClCompile Include="jmText.cpp" />
     <ClCompile Include="jmTitleScene.cpp" />
     <ClCompile Include="jmTransform.cpp" />
     <ClCompile Include="jmScene.cpp" />
     <ClCompile Include="jmTime.cpp" />
+    <ClCompile Include="jmPlayScene.cpp" />
+    <ClCompile Include="jmUI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc" />

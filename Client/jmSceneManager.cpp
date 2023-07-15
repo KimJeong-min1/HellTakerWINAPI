@@ -1,14 +1,22 @@
 #include "jmSceneManager.h"
 #include "jmTitleScene.h"
+#include "jmPlayScene.h"
+#include "jmCutScene.h"
+#include "jmEndingScene.h"
+#include "jmInput.h"
+
 
 namespace jm
 {
 	std::map<std::wstring, Scene*> SceneManager::mScenes = {};
 	Scene* SceneManager::mActiveScene = nullptr;
-	
+
 	void SceneManager::Initialize()
 	{
-		CreateScene<TitleScene>(L"TitleScene");
+		CreateScene<TitleScene>(L"TitleScene");		
+		CreateScene<PlayScene>(L"PlayScene");
+		CreateScene<CutScene>(L"CutScene");
+		CreateScene<EndingScene>(L"EndingScene");
 
 		LoadScene(L"TitleScene");
 	}

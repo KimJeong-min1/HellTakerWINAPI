@@ -5,6 +5,7 @@
 #include "Client.h"
 #include "jmApplication.h"
 
+
 #define MAX_LOADSTRING 100
 
 // 전역 변수:
@@ -12,6 +13,9 @@ HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
 jm::Application application;
+
+ULONG_PTR gdiplusToken;
+Gdiplus::GdiplusStartupInput gdiplusStartupInput;
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -71,6 +75,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         //
     }
     
+    Gdiplus::GdiplusShutdown(gdiplusToken);
+
     return (int) msg.wParam;
 }
 
@@ -85,8 +91,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 {
     WNDCLASSEXW wcex;
 
-    wcex.cbSize = sizeof(WNDCLASSEX);
-
+    wcex.cbSize         = sizeof(WNDCLASSEX);
     wcex.style          = CS_HREDRAW | CS_VREDRAW;
     wcex.lpfnWndProc    = WndProc;
     wcex.cbClsExtra     = 0;
@@ -95,7 +100,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_CLIENT));
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_CLIENT);
+    wcex.lpszMenuName   = nullptr;
     wcex.lpszClassName  = szWindowClass;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
@@ -119,6 +124,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    // 윈도우 핸들을 이용해서 1600 x 900 윈도우를 만든다
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       0, 0, 1600, 900, nullptr, nullptr, hInstance, nullptr);
+
+   // GdiPlus 초기화
+   Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
 
    // 어플리케이션클래스를 초기화를 해주는 함수
    application.Initialize(hWnd);

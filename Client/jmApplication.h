@@ -17,6 +17,11 @@ namespace jm
 		void Update();
 		void Render();
 	
+		HWND GetHwnd() { return mHwnd; }
+		HDC GetHdc() { return mHdc; }
+		UINT GetWidth() { return mWidth; }
+		UINT GetHeight() { return mHeight; }
+
 	private:
 		HWND mHwnd;
 		HDC mHdc;

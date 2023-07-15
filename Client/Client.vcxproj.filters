@@ -60,6 +60,33 @@
     <Filter Include="Contents\GameObject\Player">
       <UniqueIdentifier>{b91b2f38-a30a-4d63-84f1-ede4a1d5add1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameObject\BackGround">
+      <UniqueIdentifier>{6fefd915-df61-47c1-9e7c-0b11dea00377}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Text">
+      <UniqueIdentifier>{d88d30ec-14bb-473c-8f06-7a1181761619}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Monster">
+      <UniqueIdentifier>{7c26ba8e-7931-4d95-b9d2-3047f9d28d21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Resource">
+      <UniqueIdentifier>{269d728f-26d2-44cf-81de-0d177740fc23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Resource\Image">
+      <UniqueIdentifier>{461ac982-cada-418e-a3aa-2f2f05fed3f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Devil">
+      <UniqueIdentifier>{fc50c111-3d99-4f2d-8fdb-adeb5d469760}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\UI">
+      <UniqueIdentifier>{6c5e8f8e-7436-4af4-83a3-f3c6b0da23fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\Animator">
+      <UniqueIdentifier>{ba23b4a9-2851-4d20-8baa-0e666fcdce22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Resource\Animation">
+      <UniqueIdentifier>{bfcbd7fd-0115-429d-8dba-8e6b4cbe6df5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -125,6 +152,45 @@
     <ClInclude Include="jmObject.h">
       <Filter>Engine\GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="jmPlayScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="jmCutScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="jmBackGround.h">
+      <Filter>Contents\GameObject\BackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="jmText.h">
+      <Filter>Contents\GameObject\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="jmMonster.h">
+      <Filter>Contents\GameObject\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="jmEndingScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="jmResource.h">
+      <Filter>Engine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="jmResources.h">
+      <Filter>Engine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="jmTexture.h">
+      <Filter>Engine\Resource\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="jmDevil.h">
+      <Filter>Contents\GameObject\Devil</Filter>
+    </ClInclude>
+    <ClInclude Include="jmUI.h">
+      <Filter>Contents\GameObject\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="jmAnimator.h">
+      <Filter>Engine\Component\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="jmAnimation.h">
+      <Filter>Engine\Resource\Animation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -182,6 +248,48 @@
     </ClCompile>
     <ClCompile Include="jmSceneManager.cpp">
       <Filter>Engine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="jmPlayScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="jmCutScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="jmBackGround.cpp">
+      <Filter>Contents\GameObject\BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="jmText.cpp">
+      <Filter>Contents\GameObject\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="jmMonster.cpp">
+      <Filter>Contents\GameObject\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="jmEndingScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="jmResource.cpp">
+      <Filter>Engine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="jmResources.cpp">
+      <Filter>Engine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="jmTexture.cpp">
+      <Filter>Engine\Resource\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="jmMath.cpp">
+      <Filter>Engine\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="jmDevil.cpp">
+      <Filter>Contents\GameObject\Devil</Filter>
+    </ClCompile>
+    <ClCompile Include="jmUI.cpp">
+      <Filter>Contents\GameObject\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="jmAnimator.cpp">
+      <Filter>Engine\Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="jmAnimation.cpp">
+      <Filter>Engine\Resource\Animation</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
