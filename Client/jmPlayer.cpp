@@ -25,44 +25,68 @@ namespace jm
 
 		if (Input::GetKey(eKeyCode::W))
 		{
-				anim->PlayAnimation(L"Move", true);
-
-				pos.y -= 300.0f * Time::DeltaTime();
+			if (anim->IsActiveAnimaition(L"RightStay") == true)
+			{
+				anim->PlayAnimation(L"RightMove", true);
+			}
+			else if (anim->IsActiveAnimaition(L"LeftStay") == true)
+			{
+				anim->PlayAnimation(L"LeftMove", true);
+			}
+			pos.y -= 300.0f * Time::DeltaTime();
 		}
 		if (Input::GetKey(eKeyCode::A))
 		{
-			anim->PlayAnimation(L"Move", true);
-
+			anim->PlayAnimation(L"LeftMove", true);
 			pos.x -= 300.0f * Time::DeltaTime();
 		}
 		if (Input::GetKey(eKeyCode::S))
 		{
-			anim->PlayAnimation(L"Move", true);
-
+			if (anim->IsActiveAnimaition(L"RightStay") == true)
+			{
+				anim->PlayAnimation(L"RightMove", true);
+			}
+			else if (anim->IsActiveAnimaition(L"LeftStay") == true)
+			{
+				anim->PlayAnimation(L"LeftMove", true);
+			}
 			pos.y += 300.0f * Time::DeltaTime();
 		}
 		if (Input::GetKey(eKeyCode::D))
 		{
-			anim->PlayAnimation(L"Move", true);
-
+			anim->PlayAnimation(L"RightMove", true);
 			pos.x += 300.0f * Time::DeltaTime();
 		}
 
 		if (Input::GetKeyUp(eKeyCode::W))
 		{
-			anim->PlayAnimation(L"Stay", true);
+			if (anim->IsActiveAnimaition(L"RightMove") == true)
+			{
+				anim->PlayAnimation(L"RightStay", true);
+			}
+			else if (anim->IsActiveAnimaition(L"LeftMove") == true)
+			{
+				anim->PlayAnimation(L"LeftStay", true);
+			}
 		}
-		if (Input::GetKeyUp(eKeyCode::A))
+		else if (Input::GetKeyUp(eKeyCode::A))
 		{
-			anim->PlayAnimation(L"Stay", true);
+			anim->PlayAnimation(L"LeftStay", true);
 		}
-		if (Input::GetKeyUp(eKeyCode::S))
+		else if (Input::GetKeyUp(eKeyCode::S))
 		{
-			anim->PlayAnimation(L"Stay", true);
+			if (anim->IsActiveAnimaition(L"RightMove") == true)
+			{
+				anim->PlayAnimation(L"RightStay", true);
+			}
+			else if (anim->IsActiveAnimaition(L"LeftMove") == true)
+			{
+				anim->PlayAnimation(L"LeftStay", true);
+			}
 		}
-		if (Input::GetKeyUp(eKeyCode::D))
+		else if (Input::GetKeyUp(eKeyCode::D))
 		{
-			anim->PlayAnimation(L"Stay", true);
+			anim->PlayAnimation(L"RightStay", true);
 		}
 
 		tr->SetPosition(pos);

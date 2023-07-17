@@ -34,7 +34,7 @@ namespace jm
 
 		image = Resources::Load<Texture>(L"PlayStage1onFirebase"
 			, L"..\\Resources\\image\\Sprite\\FLAMEbase0001.png");
-		
+
 		BackGround* Flbaseonone = object::Instantiate<BackGround>(eLayerType::BackGround);
 		SpriteRenderer* Flbaseonsr = Flbaseonone->AddComponent<SpriteRenderer>();
 		Flbaseonsr->SetImage(image);
@@ -45,8 +45,8 @@ namespace jm
 		Flbaseonsr = Flbaseontwo->AddComponent<SpriteRenderer>();
 		Flbaseonsr->SetImage(image);
 		Flbaseonsr->SetScale(Vector2(0.8f, 0.8f));
-		Flbaseontwo->GetComponent<Transform>()->SetPosition(Vector2(1000.0f, 410.0f));		
-		
+		Flbaseontwo->GetComponent<Transform>()->SetPosition(Vector2(1000.0f, 410.0f));
+
 		image = Resources::Load<Texture>(L"PlayStage1offFirebase"
 			, L"..\\Resources\\image\\Sprite\\FLAMEbase0002.png");
 
@@ -64,13 +64,13 @@ namespace jm
 
 		image = Resources::Load<Texture>(L"PlayUIBackGroundone"
 			, L"..\\Resources\\image\\Sprite\\mainUIexport_bUI2.png");
-		
+
 		BackGround* uibg = object::Instantiate<BackGround>(eLayerType::BackGround);
 		SpriteRenderer* uibgsr = uibg->AddComponent<SpriteRenderer>();
 		uibgsr->SetImage(image);
 		uibgsr->SetScale(Vector2(0.8f, 0.8f));
 		uibg->GetComponent<Transform>()->SetPosition(Vector2(0.0f, 0.0f));
-		
+
 		image = Resources::Load<Texture>(L"PlayUIBackGroundtwo"
 			, L"..\\Resources\\image\\Sprite\\mainUIexport_fUI0001.png");
 
@@ -82,34 +82,43 @@ namespace jm
 
 		/*image = Resources::Load<Texture>(L"Player"
 			, L"..\\Resources\\image\\Player\\Stay");*/
-	
+
 		Player* player = object::Instantiate<Player>(eLayerType::Player);
 		Transform* pltr = player->GetComponent<Transform>();
-		
 		pltr->SetPosition(Vector2(950.0f, 200.0f));
-		
 
 		Animator* plat = player->AddComponent<Animator>();
-		plat->CreateAnimationFolder(L"Stay", L"..\\Resources\\image\\Player\\Stay");
-		plat->CreateAnimationFolder(L"Move", L"..\\Resources\\image\\Player\\Move");
-		plat->PlayAnimation(L"Stay", true);
-	
 
-
+		plat->CreateAnimationFolder(L"RightStay", L"..\\Resources\\image\\Player\\RightStay");
+		plat->CreateAnimationFolder(L"RightMove", L"..\\Resources\\image\\Player\\RightMove");
+		plat->CreateAnimationFolder(L"LeftStay", L"..\\Resources\\image\\Player\\LeftStay");
+		plat->CreateAnimationFolder(L"LeftMove", L"..\\Resources\\image\\Player\\LeftMove");
+		plat->PlayAnimation(L"RightStay", true);
 
 		image = Resources::Load<Texture>(L"MosterImage"
 			, L"..\\Resources\\image\\Sprite\\assets100V20225.png");
 
-		Monster* monster = object::Instantiate<Monster>(eLayerType::Monster);
-		SpriteRenderer* mo = monster->AddComponent<SpriteRenderer>();
+		Monster* monsterone = object::Instantiate<Monster>(eLayerType::Monster);
+		SpriteRenderer* mo = monsterone->AddComponent<SpriteRenderer>();
 		mo->SetImage(image);
 		mo->SetScale(Vector2(0.8f, 0.8f));
-		monster->GetComponent<Transform>()->SetPosition(Vector2(830.0f, 330.0f));
+		monsterone->GetComponent<Transform>()->SetPosition(Vector2(830.0f, 340.0f));
+		
+		Monster* monstertwo = object::Instantiate<Monster>(eLayerType::Monster);
+		mo = monstertwo->AddComponent<SpriteRenderer>();
+		mo->SetImage(image);
+		mo->SetScale(Vector2(0.8f, 0.8f));
+		monstertwo->GetComponent<Transform>()->SetPosition(Vector2(750.f, 260.0f));
+
+		Monster* monsterthree = object::Instantiate<Monster>(eLayerType::Monster);
+		mo = monsterthree->AddComponent<SpriteRenderer>();
+		mo->SetImage(image);
+		mo->SetScale(Vector2(0.8f, 0.8f));
+		monsterthree->GetComponent<Transform>()->SetPosition(Vector2(670.0f, 340.0f));
 	}
 	void PlayScene::Update()
 	{
 		Scene::Update();
-
 
 		if (Input::GetKeyDown(eKeyCode::T))
 		{

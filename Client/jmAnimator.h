@@ -30,6 +30,7 @@ namespace jm
 		void SetAffectedCamera(bool enable) { mbAffectedCamera = enable; }
 		float GetAlpha() { return mAlpha; }
 		void SetAlpha(float alpha) { mAlpha = alpha; }
+		bool IsActiveAnimaition(const std::wstring& name);
 
 	private:
 		std::map<std::wstring, Animation*> mAnimations;

@@ -119,4 +119,16 @@ namespace jm
 		mActiveAnimation->Reset();
 		mbLoop = loop;
 	}
+
+	bool Animator::IsActiveAnimaition(const std::wstring& name)
+	{
+		if (name == mActiveAnimation->Getname())
+		{
+			return true;
+		}
+		
+		return false;
+	}
+
+	
 }
