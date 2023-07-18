@@ -6,6 +6,7 @@
 #include "jmBackGround.h"
 #include "jmResources.h"
 #include "jmTexture.h"
+#include "jmTransform.h"
 
 namespace jm
 {
@@ -27,6 +28,7 @@ namespace jm
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(1.3f, 1.4f));
+		bg->GetComponent<Transform>()->SetPosition(Vector2(800.0f, 450.0f));
 	}
 
 	void CutScene::Update()

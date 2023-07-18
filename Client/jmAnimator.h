@@ -30,6 +30,8 @@ namespace jm
 		void SetAffectedCamera(bool enable) { mbAffectedCamera = enable; }
 		float GetAlpha() { return mAlpha; }
 		void SetAlpha(float alpha) { mAlpha = alpha; }
+		Vector2 GetScale() { return mScale; }
+		void SetScale(Vector2 scale) { mScale = scale; }
 		bool IsActiveAnimaition(const std::wstring& name);
 
 	private:
@@ -39,5 +41,6 @@ namespace jm
 		bool mbLoop;
 		bool mbAffectedCamera;
 		float mAlpha;
+		Vector2 mScale;
 	};
 }

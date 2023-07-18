@@ -8,6 +8,7 @@ namespace jm
 	Animator::Animator()
 		: Component(eComponentType::Animator)
 		, mAlpha(1.0f)
+		, mScale(Vector2::one)
 	{
 	}
 	Animator::~Animator()

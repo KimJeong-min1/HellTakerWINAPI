@@ -17,6 +17,9 @@ namespace jm
 	
 		void SetImage(Texture* image) { mTexture = image; }
 		void SetScale(Vector2 scale) {	mScale = scale; }
+		float GetAlpha() { return mAlpha; }
+		void SetAlpha(float alpha) { mAlpha = alpha; }
+	
 	private:
 		//Gdiplus::Image* mTexture;
 		Texture* mTexture;

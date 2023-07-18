@@ -6,6 +6,7 @@
 #include "jmInput.h"
 #include "jmReSources.h"
 #include "jmBackGround.h"
+#include "jmTransform.h"
 
 namespace jm
 {
@@ -28,6 +29,7 @@ namespace jm
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(1.1f, 1.9f));
+		bg->GetComponent<Transform>()->SetPosition(Vector2(800.0f, 450.0f));
 		
 		//Text* text = object::Instantiate<Text>(eLayerType::Text);
 	}

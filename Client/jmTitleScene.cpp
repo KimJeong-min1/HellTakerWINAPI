@@ -32,6 +32,7 @@ namespace jm
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(1.0f, 2.0f));
+		bg->GetComponent<Transform>()->SetPosition(Vector2(800.0f, 450.0f));
 
 		image = Resources::Load<Texture>(L"baalzebub"
 			, L"..\\resources\\image\\Sprite\\beel_fly.png");
@@ -40,7 +41,7 @@ namespace jm
 		SpriteRenderer* sr = devil->AddComponent<SpriteRenderer>();
 		sr->SetImage(image);
 		sr->SetScale(Vector2(0.8f, 0.8f));
-		devil->GetComponent<Transform>()->SetPosition(Vector2(72.0f, 0.0f));
+		devil->GetComponent<Transform>()->SetPosition(Vector2(836.0f, 300.0f));
 
 
 	}

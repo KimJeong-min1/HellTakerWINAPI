@@ -2,6 +2,7 @@
 #include "jmTransform.h"
 #include "jmInput.h"
 #include "jmTime.h"
+#include "jmSpriteRenderer.h"
 
 namespace jm
 {
@@ -23,6 +24,8 @@ namespace jm
 	void BackGround::Update()
 	{
 		GameObject::Update();
+
+		SpriteRenderer* sr = GetComponent<SpriteRenderer>();
 	}
 
 	void BackGround::Render(HDC hdc)
