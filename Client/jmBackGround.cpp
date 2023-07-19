@@ -25,7 +25,7 @@ namespace jm
 	{
 		GameObject::Update();
 
-		SpriteRenderer* sr = GetComponent<SpriteRenderer>();
+		//SpriteRenderer* sr = GetComponent<SpriteRenderer>();
 	}
 
 	void BackGround::Render(HDC hdc)

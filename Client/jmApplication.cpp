@@ -86,8 +86,10 @@ namespace jm
 	void Application::Render()
 	{
 		//Rectangle(mhdc, 100, 100, 200, 200);
-		HBRUSH brush = CreateSolidBrush(RGB(125, 125, 125));
+		//HBRUSH brush = CreateSolidBrush(RGB(125, 125, 125));
+		HBRUSH brush = CreateSolidBrush(RGB(2, 2, 27));
 		HBRUSH oldBrush = (HBRUSH)SelectObject(mBackHdc, brush);
+		
 		// 화면 전체를 흰색으로 그려주는 함수
 		Rectangle(mBackHdc, -1, -1, mWidth + 1, mHeight + 1);
 		SelectObject(mBackHdc, oldBrush);

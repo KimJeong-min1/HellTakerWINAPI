@@ -9,6 +9,7 @@
 #include "jmReSources.h"
 #include "jmTransform.h"
 #include "jmAnimator.h"
+#include "jmUI.h"
 
 namespace jm
 {
@@ -24,7 +25,7 @@ namespace jm
 	{
 
 		Texture* image = Resources::Load<Texture>(L"PlayStage1"
-			, L"..\\Resources\\image\\Chapter\\chapterBG0001.png");
+			, L"..\\Resources\\image\\Chapter\\chapterBG0001.bmp");
 
 		BackGround* bg = object::Instantiate<BackGround>(eLayerType::BackGround);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
@@ -61,61 +62,95 @@ namespace jm
 		Flbaseoffsr->SetImage(image);
 		Flbaseoffsr->SetScale(Vector2(0.8f, 0.8f));
 		Flbaseofftwo->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 500.0f));
+		
+		image = Resources::Load<Texture>(L"PlayUIBackGroundLefttop"
+			, L"..\\Resources\\image\\UI\\mainUIexport_Lefttop.bmp");
 
-		image = Resources::Load<Texture>(L"PlayUIBackGroundone"
-			, L"..\\Resources\\image\\Sprite\\mainUIexport_bUI2.png");
-
-		BackGround* uibg = object::Instantiate<BackGround>(eLayerType::BackGround);
-		SpriteRenderer* uibgsr = uibg->AddComponent<SpriteRenderer>();
+		UI* uiLefttopbg = object::Instantiate<UI>(eLayerType::UI);
+		SpriteRenderer* uibgsr = uiLefttopbg->AddComponent<SpriteRenderer>();
 		uibgsr->SetImage(image);
 		uibgsr->SetScale(Vector2(0.8f, 0.8f));
-		uibg->GetComponent<Transform>()->SetPosition(Vector2(125.0f, 225.0f));
+		uiLefttopbg->GetComponent<Transform>()->SetPosition(Vector2(125.0f, 225.0f));
 
-		image = Resources::Load<Texture>(L"PlayUIBackGroundtwo"
-			, L"..\\Resources\\image\\Sprite\\mainUIexport_fUI0001.png");
+		image = Resources::Load<Texture>(L"PlayUIBackGroundLeftbottom"
+			, L"..\\Resources\\image\\UI\\mainUIexport_Leftbottom.bmp");
 
-		BackGround* uibgtwo = object::Instantiate<BackGround>(eLayerType::BackGround);
-		SpriteRenderer* uisrbgtwo = uibgtwo->AddComponent<SpriteRenderer>();
+		UI* uiLeftbottombg = object::Instantiate<UI>(eLayerType::UI);
+		SpriteRenderer* uisrbgtwo = uiLeftbottombg->AddComponent<SpriteRenderer>();
 		uisrbgtwo->SetImage(image);
 		uisrbgtwo->SetScale(Vector2(0.8f, 0.8f));
-		uibgtwo->GetComponent<Transform>()->SetPosition(Vector2(194.0f, 626.0f));
+		uiLeftbottombg->GetComponent<Transform>()->SetPosition(Vector2(194.0f, 626.0f));
 
-		/*image = Resources::Load<Texture>(L"Player"
-			, L"..\\Resources\\image\\Player\\Stay");*/
+		image = Resources::Load<Texture>(L"PlayUIBackGroundRighttop"
+			, L"..\\Resources\\image\\UI\\mainUIexport_Righttop.bmp");
+
+		UI* uiRighttopbg = object::Instantiate<UI>(eLayerType::UI);
+		SpriteRenderer* uisrbgthree = uiRighttopbg->AddComponent<SpriteRenderer>();
+		uisrbgthree->SetImage(image);
+		uisrbgthree->SetScale(Vector2(0.8f, 0.8f));
+		uiRighttopbg->GetComponent<Transform>()->SetPosition(Vector2(1475.0f, 225.0f));
+		
+
+		image = Resources::Load<Texture>(L"PlayUIBackGroundRightbottom"
+			, L"..\\Resources\\image\\UI\\mainUIexport_Rightbottom.bmp");
+
+		UI* uiRightbottombg = object::Instantiate<UI>(eLayerType::UI);
+		SpriteRenderer* uisrbgfour = uiRightbottombg->AddComponent<SpriteRenderer>();
+		uisrbgfour->SetImage(image);
+		uisrbgfour->SetScale(Vector2(0.8f, 0.8f));
+		uiRightbottombg->GetComponent<Transform>()->SetPosition(Vector2(1406.0f, 626.0f));
 
 		Player* player = object::Instantiate<Player>(eLayerType::Player);
 		Transform* pltr = player->GetComponent<Transform>();
-		pltr->SetPosition(Vector2(1000.0f, 280.0f));
+		pltr->SetPosition(Vector2(960.0f, 230.0f));
 
 		Animator* plat = player->AddComponent<Animator>();
 
-		plat->CreateAnimationFolder(L"RightStay", L"..\\Resources\\image\\Player\\RightStay");
-		plat->CreateAnimationFolder(L"RightMove", L"..\\Resources\\image\\Player\\RightMove");
-		plat->CreateAnimationFolder(L"LeftStay", L"..\\Resources\\image\\Player\\LeftStay");
-		plat->CreateAnimationFolder(L"LeftMove", L"..\\Resources\\image\\Player\\LeftMove");
-		plat->PlayAnimation(L"RightStay", true);
+		plat->CreateAnimationFolder(L"PlayerRightStay", L"..\\Resources\\image\\Player\\PlayerRightStay"
+			, Vector2(0.0f, 0.0f), 0.05f);
+		plat->CreateAnimationFolder(L"PlayerRightMove", L"..\\Resources\\image\\Player\\PlayerRightMove"
+			, Vector2(0.0f, 0.0f), 0.05f);
+		plat->CreateAnimationFolder(L"PlayerLeftStay", L"..\\Resources\\image\\Player\\PlayerLeftStay"
+			, Vector2(0.0f, 0.0f), 0.05f);
+		plat->CreateAnimationFolder(L"PlayerLeftMove", L"..\\Resources\\image\\Player\\PlayerLeftMove"
+			, Vector2(0.0f, 0.0f), 0.05f);
+		plat->CreateAnimationFolder(L"PlayerLeftKick", L"..\\Resources\\image\\Player\\PlayerLeftKick"
+			, Vector2(0.0f, 0.0f), 0.05f);
+		plat->CreateAnimationFolder(L"PlayerRightKick", L"..\\Resources\\image\\Player\\PlayerRightKick"
+			, Vector2(0.0f, 0.0f), 0.05f);
+		plat->PlayAnimation(L"PlayerRightStay", true);
 		plat->SetScale(Vector2(0.8f, 0.8f));
 
-		image = Resources::Load<Texture>(L"MosterImage"
-			, L"..\\Resources\\image\\Sprite\\assets100V20225.png");
-
 		Monster* monsterone = object::Instantiate<Monster>(eLayerType::Monster);
-		SpriteRenderer* mo = monsterone->AddComponent<SpriteRenderer>();
-		mo->SetImage(image);
-		mo->SetScale(Vector2(0.8f, 0.8f));
-		monsterone->GetComponent<Transform>()->SetPosition(Vector2(880.0f, 390.0f));
-		
+		Transform* motrone = monsterone->GetComponent<Transform>();
+		motrone->SetPosition(Vector2(885.0f, 390.0f));
+
+		Animator* mooneAt = monsterone->AddComponent<Animator>();
+		mooneAt->CreateAnimationFolder(L"MonsterRightStay", L"..\\Resources\\image\\Monster\\MonsterRightStay"
+			, Vector2(0.0f, 0.0f), 0.05f);
+		mooneAt->PlayAnimation(L"MonsterRightStay", true);
+		mooneAt->SetScale(Vector2(0.8f, 0.8f));
+
 		Monster* monstertwo = object::Instantiate<Monster>(eLayerType::Monster);
-		mo = monstertwo->AddComponent<SpriteRenderer>();
-		mo->SetImage(image);
-		mo->SetScale(Vector2(0.8f, 0.8f));
-		monstertwo->GetComponent<Transform>()->SetPosition(Vector2(800.0f, 310.0f));
+		Transform* motrtwo = monstertwo->GetComponent<Transform>();
+		motrtwo->SetPosition(Vector2(805.0f, 310.0f));
+
+		Animator* motwoAt = monstertwo->AddComponent<Animator>();
+		motwoAt->CreateAnimationFolder(L"MonsterRightStaytwo", L"..\\Resources\\image\\Monster\\MonsterRightStay"
+			, Vector2(0.0f, 0.0f), 0.05f);
+		motwoAt->PlayAnimation(L"MonsterRightStaytwo", true);
+		motwoAt->SetScale(Vector2(0.8f, 0.8f));
+
 
 		Monster* monsterthree = object::Instantiate<Monster>(eLayerType::Monster);
-		mo = monsterthree->AddComponent<SpriteRenderer>();
-		mo->SetImage(image);
-		mo->SetScale(Vector2(0.8f, 0.8f));
-		monsterthree->GetComponent<Transform>()->SetPosition(Vector2(720.0f, 390.0f));
+		Transform* motrthree = monsterthree->GetComponent<Transform>();
+		motrthree->SetPosition(Vector2(725.0f, 390.0f));
+
+		Animator* mothreeAt = monsterthree->AddComponent<Animator>();
+		mothreeAt->CreateAnimationFolder(L"MonsterRightStaythree", L"..\\Resources\\image\\Monster\\MonsterRightStay"
+			, Vector2(0.0f, 0.0f), 0.05f);
+		mothreeAt->PlayAnimation(L"MonsterRightStaythree", true);
+		mothreeAt->SetScale(Vector2(0.8f, 0.8f));
 	}
 	void PlayScene::Update()
 	{

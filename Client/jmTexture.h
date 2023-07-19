@@ -29,7 +29,8 @@ namespace jm
 			, Vector2 rightBottom
 			, Vector2 offset= Vector2::zero
 			, Vector2 scale = Vector2::one  
-			, float alpha = 1.0f);
+			, float alpha = 1.0f
+			, float rotate = 0.0f);
 
 		UINT GetWidth() { return mWidth; }
 		void SetWidth(UINT width) { mWidth = width; }

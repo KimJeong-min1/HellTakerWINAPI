@@ -87,6 +87,12 @@
     <Filter Include="Engine\Resource\Animation">
       <UniqueIdentifier>{bfcbd7fd-0115-429d-8dba-8e6b4cbe6df5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Component\Collider">
+      <UniqueIdentifier>{9db0c697-e8ee-4257-b3d1-00b7ce475799}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Collision">
+      <UniqueIdentifier>{e540dea1-0b00-457b-8cdf-67291ea60ef8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -191,6 +197,12 @@
     <ClInclude Include="jmAnimation.h">
       <Filter>Engine\Resource\Animation</Filter>
     </ClInclude>
+    <ClInclude Include="jmCollider.h">
+      <Filter>Engine\Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="jmCollisionManager.h">
+      <Filter>Engine\Collision</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -290,6 +302,12 @@
     </ClCompile>
     <ClCompile Include="jmAnimation.cpp">
       <Filter>Engine\Resource\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="jmCollider.cpp">
+      <Filter>Engine\Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="jmCollisionManager.cpp">
+      <Filter>Engine\Collision</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

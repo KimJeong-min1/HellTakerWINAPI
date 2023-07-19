@@ -7,6 +7,14 @@ namespace jm
 	class Player : public GameObject
 	{
 	public:
+		enum class eState
+		{
+			Idle,
+			Move,
+			Kick,
+			Death,
+			End,
+		};
 		Player();
 		virtual ~Player();
 
@@ -14,7 +22,12 @@ namespace jm
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-	private:
+		void Idle();
+		void Move();
+		void Kick();
+		void Dead();
 
+	private:
+		eState mState;
 	};
 }

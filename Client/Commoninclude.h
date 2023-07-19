@@ -6,6 +6,7 @@
 #include <functional>
 #include <string>
 #include <filesystem>
+#include <bitset>
 
 #include "framework.h"
 #include "jmMath.h"
@@ -24,8 +25,8 @@ namespace jm::enums
 		Devil,
 		Angel,
 		Effect,
-		UI,
 		Text,
+		UI,
 		End
 	};
 
@@ -35,6 +36,7 @@ namespace jm::enums
 		SpriteRenderer,
 		Animation,
 		Animator,
+		Collider,
 		End
 	};
 }

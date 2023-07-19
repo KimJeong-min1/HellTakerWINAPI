@@ -154,6 +154,8 @@
     <ClInclude Include="Client.h" />
     <ClInclude Include="jmAnimation.h" />
     <ClInclude Include="jmAnimator.h" />
+    <ClInclude Include="jmCollider.h" />
+    <ClInclude Include="jmCollisionManager.h" />
     <ClInclude Include="jmDevil.h" />
     <ClInclude Include="jmEndingScene.h" />
     <ClInclude Include="jmCutScene.h" />
@@ -190,6 +192,8 @@
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="jmAnimation.cpp" />
     <ClCompile Include="jmAnimator.cpp" />
+    <ClCompile Include="jmCollider.cpp" />
+    <ClCompile Include="jmCollisionManager.cpp" />
     <ClCompile Include="jmDevil.cpp" />
     <ClCompile Include="jmEndingScene.cpp" />
     <ClCompile Include="jmCutScene.cpp" />

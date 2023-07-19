@@ -4,11 +4,11 @@
 
 namespace jm
 {
-
 	SpriteRenderer::SpriteRenderer()
 		: Component(eComponentType::SpriteRenderer)
 		, mScale(Vector2::one)
 		, mTexture(nullptr)
+		, mAlpha(1.0f)
 	{
 	}
 	SpriteRenderer::~SpriteRenderer()
@@ -34,6 +34,8 @@ namespace jm
 			, Vector2(mTexture->GetWidth(), mTexture->GetHeight())
 			, Vector2::zero
 			, mScale
-			, mAlpha);
+			, mAlpha
+			, tr->GetRotation());
 	}
+
 }

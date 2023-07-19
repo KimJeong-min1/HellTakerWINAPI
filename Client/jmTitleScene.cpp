@@ -19,31 +19,24 @@ namespace jm
 	void TitleScene::Initialize()
 	{
 		Texture* image = Resources::Load<Texture>(L"TitleBackGroundImage"
-			, L"..\\Resources\\image\\Texture2D\\dialogueBG_abyss.png");
+			, L"..\\Resources\\image\\BackGround\\dialogueBG_abyss.bmp");
 
-		/*BackGround* backGround = object::Instantiate<BackGround>(eLayerType::BackGround);
-		backGround->AddComponent<SpriteRenderer>();*/
-
-		/*Player* player = object::Instantiate<Player>(eLayerType::Player);
-		SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
-		sr->SetImage(image);*/
 
 		BackGround* bg = object::Instantiate<BackGround>(eLayerType::BackGround);
+		bg->GetComponent<Transform>()->SetPosition(Vector2(800.0f, 450.0f));
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(1.0f, 2.0f));
-		bg->GetComponent<Transform>()->SetPosition(Vector2(800.0f, 450.0f));
 
-		image = Resources::Load<Texture>(L"baalzebub"
-			, L"..\\resources\\image\\Sprite\\beel_fly.png");
+		image = Resources::Load<Texture>(L"beelzebub"
+			, L"..\\Resources\\image\\Devil\\Beelzebub\\beel_fly.bmp");
 
 		Devil* devil = object::Instantiate<Devil>(eLayerType::Devil);
-		SpriteRenderer* sr = devil->AddComponent<SpriteRenderer>();
-		sr->SetImage(image);
-		sr->SetScale(Vector2(0.8f, 0.8f));
 		devil->GetComponent<Transform>()->SetPosition(Vector2(836.0f, 300.0f));
-
-
+		SpriteRenderer* desr = devil->AddComponent<SpriteRenderer>();
+		desr->SetImage(image);
+		desr->SetScale(Vector2(0.8f, 0.8f));
+		
 	}
 	void TitleScene::Update()
 	{

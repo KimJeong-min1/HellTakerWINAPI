@@ -105,7 +105,8 @@ namespace jm
 		, Vector2 rightBottom
 		, Vector2 offset
 		, Vector2 scale
-		, float alpha)
+		, float alpha
+		, float rotate)
 	{
 		if (mBitmap == nullptr && mImage == nullptr)
 			return;
@@ -128,7 +129,6 @@ namespace jm
 			func.BlendFlags = 0;
 			func.AlphaFormat = AC_SRC_ALPHA;
 			// 0.0f ~ 1.0f -> 0 ~ 255
-			int alpha = 1.0f;
 			alpha = (int)(alpha * 255.0f);
 			if (alpha <= 0)
 				alpha = 0;
@@ -152,6 +152,9 @@ namespace jm
 				, Gdiplus::Color(255, 255, 255));
 
 			Gdiplus::Graphics graphics(hdc);
+			graphics.TranslateTransform((float)pos.x, (float)pos.y);
+			graphics.RotateTransform(rotate);
+			graphics.TranslateTransform(-(float)pos.x, -(float)pos.y);
 			graphics.DrawImage(mImage
 				, Gdiplus::Rect
 				(
@@ -164,6 +167,7 @@ namespace jm
 				, rightBottom.x, rightBottom.y
 				, Gdiplus::UnitPixel
 				, nullptr);
+
 		}
 	}
 }

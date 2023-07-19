@@ -15,7 +15,7 @@ namespace jm
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-		void CreateAnimation(const std::wstring& name
+		Animation* CreateAnimation(const std::wstring& name
 			, class Texture* texture
 			, Vector2 leftTop, Vector2 size, UINT spriteLength
 			, Vector2 offset = Vector2::zero, float duration = 0.1f);
@@ -33,6 +33,7 @@ namespace jm
 		Vector2 GetScale() { return mScale; }
 		void SetScale(Vector2 scale) { mScale = scale; }
 		bool IsActiveAnimaition(const std::wstring& name);
+		bool IsActiveAnimaitionComplete() { return mActiveAnimation->IsComplete(); }
 
 	private:
 		std::map<std::wstring, Animation*> mAnimations;
