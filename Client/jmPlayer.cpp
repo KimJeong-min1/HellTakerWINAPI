@@ -45,59 +45,91 @@ namespace jm
 		GameObject::Render(hdc);
 	}
 
-	void Player::Idle()
+	void Player::OnCollisionEnter(Collider* othher)
 	{
-		Animator* animator = GetComponent<Animator>();
-
-		if (Input::GetKey(eKeyCode::W))
+		/*Animator* animator = GetComponent<Animator>();
+		
+		if (Input::GetKeyDown(eKeyCode::W) || Input::GetKeyDown(eKeyCode::A)
+			|| Input::GetKeyDown(eKeyCode::S) || Input::GetKeyDown(eKeyCode::D))
 		{
-			if (animator->IsActiveAnimaition(L"PlayerRightStay") == true)
-			{
-				animator->PlayAnimation(L"PlayerRightMove", true);
-				mState = eState::Move;
-			}
-			else if (animator->IsActiveAnimaition(L"PlayerLeftStay") == true)
-			{
-				animator->PlayAnimation(L"PlayerLeftMove", true);
-				mState = eState::Move;
-			}
-		}
-		else if (Input::GetKey(eKeyCode::A))
-		{
-			animator->PlayAnimation(L"PlayerLeftMove", true);
-			mState = eState::Move;
-		}
-		else if (Input::GetKey(eKeyCode::S))
-		{
-			if (animator->IsActiveAnimaition(L"PlayerRightStay") == true)
-			{
-				animator->PlayAnimation(L"PlayerRightMove", true);
-				mState = eState::Move;
-			}
-			else if (animator->IsActiveAnimaition(L"PlayerLeftStay") == true)
-			{
-				animator->PlayAnimation(L"PlayerLeftMove", true);
-				mState = eState::Move;
-			}
-		}
-		else if (Input::GetKey(eKeyCode::D))
-		{
-			animator->PlayAnimation(L"PlayerRightMove", true);
-			mState = eState::Move;
-		}
-
-		if (Input::GetKey(eKeyCode::K))
-		{
-			if (animator->IsActiveAnimaition(L"PlayerRightStay") == true)
-			{
-				animator->PlayAnimation(L"PlayerRightKick", false);
-				mState = eState::Kick;
-			}
-			else if (animator->IsActiveAnimaition(L"PlayerLeftStay") == true)
+			Animator* animator = GetComponent<Animator>();
+			if (animator->IsActiveAnimaition(L"PlayerLeftStay") == true)
 			{
 				animator->PlayAnimation(L"PlayerLeftKick", false);
 				mState = eState::Kick;
 			}
+			else if (animator->IsActiveAnimaition(L"PlayerRightKick") == true)
+			{
+				animator->PlayAnimation(L"PlayerRightKick", false);
+				mState = eState::Kick;
+			}
+		}*/
+	}
+
+	void Player::OnCollisionStay(Collider* othher)
+	{
+		Animator* animator = GetComponent<Animator>();
+
+		if (Input::GetKeyDown(eKeyCode::W) || Input::GetKeyDown(eKeyCode::A)
+			|| Input::GetKeyDown(eKeyCode::S) || Input::GetKeyDown(eKeyCode::D))
+		{
+			Animator* animator = GetComponent<Animator>();
+			if (animator->IsActiveAnimaition(L"PlayerLeftStay") == true)
+			{
+				animator->PlayAnimation(L"PlayerLeftKick", false);
+				mState = eState::Kick;
+			}
+			else if (animator->IsActiveAnimaition(L"PlayerRightKick") == true)
+			{
+				animator->PlayAnimation(L"PlayerRightKick", false);
+				mState = eState::Kick;
+			}
+		}
+	}
+
+	void Player::OnCollisionExit(Collider* othher)
+	{
+	}
+
+	void Player::Idle()
+	{
+		Animator* animator = GetComponent<Animator>();
+
+		if (Input::GetKey(eKeyCode::W) || Input::GetKey(eKeyCode::Up))
+		{
+			if (animator->IsActiveAnimaition(L"PlayerRightStay") == true)
+			{
+				animator->PlayAnimation(L"PlayerRightMove", true);
+				mState = eState::Move;
+			}
+			else if (animator->IsActiveAnimaition(L"PlayerLeftStay") == true)
+			{
+				animator->PlayAnimation(L"PlayerLeftMove", true);
+				mState = eState::Move;
+			}
+		}
+		else if (Input::GetKey(eKeyCode::A)|| Input::GetKey(eKeyCode::Left))
+		{
+			animator->PlayAnimation(L"PlayerLeftMove", true);
+			mState = eState::Move;
+		}
+		else if (Input::GetKey(eKeyCode::S) || Input::GetKey(eKeyCode::Down))
+		{
+			if (animator->IsActiveAnimaition(L"PlayerRightStay") == true)
+			{
+				animator->PlayAnimation(L"PlayerRightMove", true);
+				mState = eState::Move;
+			}
+			else if (animator->IsActiveAnimaition(L"PlayerLeftStay") == true)
+			{
+				animator->PlayAnimation(L"PlayerLeftMove", true);
+				mState = eState::Move;
+			}
+		}
+		else if (Input::GetKey(eKeyCode::D) || Input::GetKey(eKeyCode::Right))
+		{
+			animator->PlayAnimation(L"PlayerRightMove", true);
+			mState = eState::Move;
 		}
 	}
 
@@ -106,26 +138,28 @@ namespace jm
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 
-		if (Input::GetKey(eKeyCode::W))
+		if (Input::GetKey(eKeyCode::W) || Input::GetKey(eKeyCode::Up))
 		{
 			pos.y -= 300.0f * Time::DeltaTime();
 		}
-		else if (Input::GetKey(eKeyCode::A))
+		else if (Input::GetKey(eKeyCode::A) || Input::GetKey(eKeyCode::Left))
 		{
 			pos.x -= 300.0f * Time::DeltaTime();
 		}
-		else if (Input::GetKey(eKeyCode::S))
+		else if (Input::GetKey(eKeyCode::S) || Input::GetKey(eKeyCode::Down))
 		{
 			pos.y += 300.0f * Time::DeltaTime();
 		}
-		else if (Input::GetKey(eKeyCode::D))
+		else if (Input::GetKey(eKeyCode::D) || Input::GetKey(eKeyCode::Right))
 		{
 			pos.x += 300.0f * Time::DeltaTime();
 		}
 		tr->SetPosition(pos);
 
 		if (Input::GetKeyUp(eKeyCode::W) || Input::GetKeyUp(eKeyCode::A)
-			|| Input::GetKeyUp(eKeyCode::S) || Input::GetKeyUp(eKeyCode::D))
+			|| Input::GetKeyUp(eKeyCode::S) || Input::GetKeyUp(eKeyCode::D)
+			|| Input::GetKey(eKeyCode::Up) || Input::GetKey(eKeyCode::Left)
+			|| Input::GetKey(eKeyCode::Down) || Input::GetKey(eKeyCode::Right))
 		{
 			Animator* animator = GetComponent<Animator>();
 			if (animator->IsActiveAnimaition(L"PlayerLeftMove") == true)

@@ -4,6 +4,7 @@
 #include "jmrand.h"
 #include "jmTitleScene.h"
 #include "jmSceneManager.h"
+#include "jmCollisionManager.h"
 
 namespace jm
 {
@@ -58,7 +59,7 @@ namespace jm
 		Time::Initialize();
 		// Input 클래스 초기화
 		Input::Initialize();
-
+		CollisionManager::Initialize();
 		SceneManager::Initialize();
 	}
 
@@ -78,6 +79,8 @@ namespace jm
 		Input::Update();
 		// Time 클래스 업데이트 해주는 함수
 		Time::Update();
+		// Collision 을 업데이트 해주는 함수
+		CollisionManager::Update();
 		// Scene 을 업데이트 해주는 함수
 		SceneManager::Update();
 	}
@@ -97,7 +100,8 @@ namespace jm
 
 		// 프레임 계산을 윈도우에 그려주는 함수
 		Time::Render(mBackHdc);
-		
+		// 충돌 범위를 그려준다
+		CollisionManager::Render(mBackHdc);
 		// 씬매니저 클래스를 통해서 그림을 그려준다
 		SceneManager::Render(mBackHdc);
 		

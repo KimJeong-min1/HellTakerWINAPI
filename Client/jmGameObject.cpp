@@ -33,4 +33,16 @@ namespace jm
 		}
 	}
 
+	void GameObject::OnCollisionEnter(Collider* other)
+	{
+	}
+
+	void GameObject::OnCollisionStay(Collider* other)
+	{
+	}
+
+	void GameObject::OnCollisionExit(Collider* other)
+	{
+	}
+
 }

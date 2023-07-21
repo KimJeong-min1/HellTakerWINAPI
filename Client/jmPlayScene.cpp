@@ -10,6 +10,7 @@
 #include "jmTransform.h"
 #include "jmAnimator.h"
 #include "jmUI.h"
+#include "jmCollisionManager.h"
 
 namespace jm
 {
@@ -101,25 +102,28 @@ namespace jm
 		uiRightbottombg->GetComponent<Transform>()->SetPosition(Vector2(1406.0f, 626.0f));
 
 		Player* player = object::Instantiate<Player>(eLayerType::Player);
-		Transform* pltr = player->GetComponent<Transform>();
-		pltr->SetPosition(Vector2(960.0f, 230.0f));
+		Transform* tr = player->GetComponent<Transform>();
+		tr->SetPosition(Vector2(960.0f, 230.0f));
 
-		Animator* plat = player->AddComponent<Animator>();
+		Animator* at = player->AddComponent<Animator>();
 
-		plat->CreateAnimationFolder(L"PlayerRightStay", L"..\\Resources\\image\\Player\\PlayerRightStay"
+		at->CreateAnimationFolder(L"PlayerRightStay", L"..\\Resources\\image\\Player\\PlayerRightStay"
 			, Vector2(0.0f, 0.0f), 0.05f);
-		plat->CreateAnimationFolder(L"PlayerRightMove", L"..\\Resources\\image\\Player\\PlayerRightMove"
+		at->CreateAnimationFolder(L"PlayerRightMove", L"..\\Resources\\image\\Player\\PlayerRightMove"
 			, Vector2(0.0f, 0.0f), 0.05f);
-		plat->CreateAnimationFolder(L"PlayerLeftStay", L"..\\Resources\\image\\Player\\PlayerLeftStay"
+		at->CreateAnimationFolder(L"PlayerLeftStay", L"..\\Resources\\image\\Player\\PlayerLeftStay"
 			, Vector2(0.0f, 0.0f), 0.05f);
-		plat->CreateAnimationFolder(L"PlayerLeftMove", L"..\\Resources\\image\\Player\\PlayerLeftMove"
+		at->CreateAnimationFolder(L"PlayerLeftMove", L"..\\Resources\\image\\Player\\PlayerLeftMove"
 			, Vector2(0.0f, 0.0f), 0.05f);
-		plat->CreateAnimationFolder(L"PlayerLeftKick", L"..\\Resources\\image\\Player\\PlayerLeftKick"
+		at->CreateAnimationFolder(L"PlayerLeftKick", L"..\\Resources\\image\\Player\\PlayerLeftKick"
 			, Vector2(0.0f, 0.0f), 0.05f);
-		plat->CreateAnimationFolder(L"PlayerRightKick", L"..\\Resources\\image\\Player\\PlayerRightKick"
+		at->CreateAnimationFolder(L"PlayerRightKick", L"..\\Resources\\image\\Player\\PlayerRightKick"
 			, Vector2(0.0f, 0.0f), 0.05f);
-		plat->PlayAnimation(L"PlayerRightStay", true);
-		plat->SetScale(Vector2(0.8f, 0.8f));
+		at->PlayAnimation(L"PlayerRightStay", true);
+		at->SetScale(Vector2(0.8f, 0.8f));
+
+		Collider* col = player->AddComponent<Collider>();
+		col->SetSize(Vector2(100.0f, 100.0f));
 
 		Monster* monsterone = object::Instantiate<Monster>(eLayerType::Monster);
 		Transform* motrone = monsterone->GetComponent<Transform>();
@@ -130,6 +134,11 @@ namespace jm
 			, Vector2(0.0f, 0.0f), 0.05f);
 		mooneAt->PlayAnimation(L"MonsterRightStay", true);
 		mooneAt->SetScale(Vector2(0.8f, 0.8f));
+
+		col = monsterone->AddComponent<Collider>();
+		col->SetSize(Vector2(100.0f, 100.0f));
+
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
 
 		Monster* monstertwo = object::Instantiate<Monster>(eLayerType::Monster);
 		Transform* motrtwo = monstertwo->GetComponent<Transform>();

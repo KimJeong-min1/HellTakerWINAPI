@@ -22,6 +22,10 @@ namespace jm
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
+		virtual void OnCollisionEnter(class Collider* othher) override;
+		virtual void OnCollisionStay(class Collider* othher) override;
+		virtual void OnCollisionExit(class Collider* othher) override;
+
 		void Idle();
 		void Move();
 		void Kick();
