@@ -4,9 +4,15 @@
 
 namespace jm
 {
-	class Monster: public GameObject
+	class Monster : public GameObject
 	{
 	public:
+		enum class eState
+		{
+			Idle,
+			Hit,
+			End
+		};
 		Monster();
 		virtual ~Monster();
 
@@ -14,7 +20,14 @@ namespace jm
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-	private:
+		virtual void OnCollisionEnter(class Collider* othher) override;
+		virtual void OnCollisionStay(class Collider* othher) override;
+		virtual void OnCollisionExit(class Collider* othher) override;
 
+		void Idle();
+		void Hit();
+
+	private:
+		eState mState;
 	};
 }

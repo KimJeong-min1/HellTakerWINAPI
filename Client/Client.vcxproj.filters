@@ -51,35 +51,11 @@
     <Filter Include="Contents">
       <UniqueIdentifier>{6bc758ed-0a17-420b-b41d-6dc69fe6e4fa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Scene">
-      <UniqueIdentifier>{2635b6c3-ca78-4b78-81b1-53cd58b622ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\GameObject">
-      <UniqueIdentifier>{38981411-7f9b-4d21-81cd-4524bd2f9f55}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\GameObject\Player">
-      <UniqueIdentifier>{b91b2f38-a30a-4d63-84f1-ede4a1d5add1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\GameObject\BackGround">
-      <UniqueIdentifier>{6fefd915-df61-47c1-9e7c-0b11dea00377}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\GameObject\Text">
-      <UniqueIdentifier>{d88d30ec-14bb-473c-8f06-7a1181761619}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\GameObject\Monster">
-      <UniqueIdentifier>{7c26ba8e-7931-4d95-b9d2-3047f9d28d21}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Resource">
       <UniqueIdentifier>{269d728f-26d2-44cf-81de-0d177740fc23}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Resource\Image">
       <UniqueIdentifier>{461ac982-cada-418e-a3aa-2f2f05fed3f7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\GameObject\Devil">
-      <UniqueIdentifier>{fc50c111-3d99-4f2d-8fdb-adeb5d469760}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\GameObject\UI">
-      <UniqueIdentifier>{6c5e8f8e-7436-4af4-83a3-f3c6b0da23fa}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Component\Animator">
       <UniqueIdentifier>{ba23b4a9-2851-4d20-8baa-0e666fcdce22}</UniqueIdentifier>
@@ -92,6 +68,39 @@
     </Filter>
     <Filter Include="Engine\Collision">
       <UniqueIdentifier>{e540dea1-0b00-457b-8cdf-67291ea60ef8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Stageone">
+      <UniqueIdentifier>{6e933451-f9d6-49b1-a452-0c8f28b6f912}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Stageone\GameObject">
+      <UniqueIdentifier>{38981411-7f9b-4d21-81cd-4524bd2f9f55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Stageone\GameObject\Player">
+      <UniqueIdentifier>{b91b2f38-a30a-4d63-84f1-ede4a1d5add1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Stageone\GameObject\BackGround">
+      <UniqueIdentifier>{6fefd915-df61-47c1-9e7c-0b11dea00377}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Stageone\GameObject\Text">
+      <UniqueIdentifier>{d88d30ec-14bb-473c-8f06-7a1181761619}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Stageone\GameObject\Monster">
+      <UniqueIdentifier>{7c26ba8e-7931-4d95-b9d2-3047f9d28d21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Stageone\GameObject\Devil">
+      <UniqueIdentifier>{fc50c111-3d99-4f2d-8fdb-adeb5d469760}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Stageone\GameObject\UI">
+      <UniqueIdentifier>{6c5e8f8e-7436-4af4-83a3-f3c6b0da23fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Stagetwo">
+      <UniqueIdentifier>{08af23ab-56fd-4ddf-a479-109ee7c6e131}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Stageone\Scene">
+      <UniqueIdentifier>{2635b6c3-ca78-4b78-81b1-53cd58b622ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Stageone\GameObject\Wall">
+      <UniqueIdentifier>{8a6ea64c-43ee-4959-a070-37ea4ddfd8b5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -147,10 +156,10 @@
       <Filter>Engine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="jmPlayer.h">
-      <Filter>Contents\GameObject\Player</Filter>
+      <Filter>Contents\Stageone\GameObject\Player</Filter>
     </ClInclude>
     <ClInclude Include="jmTitleScene.h">
-      <Filter>Contents\Scene</Filter>
+      <Filter>Contents\Stageone\Scene</Filter>
     </ClInclude>
     <ClInclude Include="jmSceneManager.h">
       <Filter>Engine\Scene</Filter>
@@ -159,22 +168,22 @@
       <Filter>Engine\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="jmPlayScene.h">
-      <Filter>Contents\Scene</Filter>
+      <Filter>Contents\Stageone\Scene</Filter>
     </ClInclude>
     <ClInclude Include="jmCutScene.h">
-      <Filter>Contents\Scene</Filter>
+      <Filter>Contents\Stageone\Scene</Filter>
     </ClInclude>
     <ClInclude Include="jmBackGround.h">
-      <Filter>Contents\GameObject\BackGround</Filter>
+      <Filter>Contents\Stageone\GameObject\BackGround</Filter>
     </ClInclude>
     <ClInclude Include="jmText.h">
-      <Filter>Contents\GameObject\Text</Filter>
+      <Filter>Contents\Stageone\GameObject\Text</Filter>
     </ClInclude>
     <ClInclude Include="jmMonster.h">
-      <Filter>Contents\GameObject\Monster</Filter>
+      <Filter>Contents\Stageone\GameObject\Monster</Filter>
     </ClInclude>
     <ClInclude Include="jmEndingScene.h">
-      <Filter>Contents\Scene</Filter>
+      <Filter>Contents\Stageone\Scene</Filter>
     </ClInclude>
     <ClInclude Include="jmResource.h">
       <Filter>Engine\Resource</Filter>
@@ -186,10 +195,10 @@
       <Filter>Engine\Resource\Image</Filter>
     </ClInclude>
     <ClInclude Include="jmDevil.h">
-      <Filter>Contents\GameObject\Devil</Filter>
+      <Filter>Contents\Stageone\GameObject\Devil</Filter>
     </ClInclude>
     <ClInclude Include="jmUI.h">
-      <Filter>Contents\GameObject\UI</Filter>
+      <Filter>Contents\Stageone\GameObject\UI</Filter>
     </ClInclude>
     <ClInclude Include="jmAnimator.h">
       <Filter>Engine\Component\Animator</Filter>
@@ -202,6 +211,9 @@
     </ClInclude>
     <ClInclude Include="jmCollisionManager.h">
       <Filter>Engine\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="jmWall.h">
+      <Filter>Contents\Stageone\GameObject\Wall</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -253,31 +265,31 @@
       <Filter>Engine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="jmPlayer.cpp">
-      <Filter>Contents\GameObject\Player</Filter>
+      <Filter>Contents\Stageone\GameObject\Player</Filter>
     </ClCompile>
     <ClCompile Include="jmTitleScene.cpp">
-      <Filter>Contents\Scene</Filter>
+      <Filter>Contents\Stageone\Scene</Filter>
     </ClCompile>
     <ClCompile Include="jmSceneManager.cpp">
       <Filter>Engine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="jmPlayScene.cpp">
-      <Filter>Contents\Scene</Filter>
+      <Filter>Contents\Stageone\Scene</Filter>
     </ClCompile>
     <ClCompile Include="jmCutScene.cpp">
-      <Filter>Contents\Scene</Filter>
+      <Filter>Contents\Stageone\Scene</Filter>
     </ClCompile>
     <ClCompile Include="jmBackGround.cpp">
-      <Filter>Contents\GameObject\BackGround</Filter>
+      <Filter>Contents\Stageone\GameObject\BackGround</Filter>
     </ClCompile>
     <ClCompile Include="jmText.cpp">
-      <Filter>Contents\GameObject\Text</Filter>
+      <Filter>Contents\Stageone\GameObject\Text</Filter>
     </ClCompile>
     <ClCompile Include="jmMonster.cpp">
-      <Filter>Contents\GameObject\Monster</Filter>
+      <Filter>Contents\Stageone\GameObject\Monster</Filter>
     </ClCompile>
     <ClCompile Include="jmEndingScene.cpp">
-      <Filter>Contents\Scene</Filter>
+      <Filter>Contents\Stageone\Scene</Filter>
     </ClCompile>
     <ClCompile Include="jmResource.cpp">
       <Filter>Engine\Resource</Filter>
@@ -292,10 +304,10 @@
       <Filter>Engine\Common</Filter>
     </ClCompile>
     <ClCompile Include="jmDevil.cpp">
-      <Filter>Contents\GameObject\Devil</Filter>
+      <Filter>Contents\Stageone\GameObject\Devil</Filter>
     </ClCompile>
     <ClCompile Include="jmUI.cpp">
-      <Filter>Contents\GameObject\UI</Filter>
+      <Filter>Contents\Stageone\GameObject\UI</Filter>
     </ClCompile>
     <ClCompile Include="jmAnimator.cpp">
       <Filter>Engine\Component\Animator</Filter>
@@ -308,6 +320,9 @@
     </ClCompile>
     <ClCompile Include="jmCollisionManager.cpp">
       <Filter>Engine\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="jmWall.cpp">
+      <Filter>Contents\Stageone\GameObject\Wall</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

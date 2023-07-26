@@ -63,7 +63,7 @@ namespace jm
 		Flbaseoffsr->SetImage(image);
 		Flbaseoffsr->SetScale(Vector2(0.8f, 0.8f));
 		Flbaseofftwo->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 500.0f));
-		
+
 		image = Resources::Load<Texture>(L"PlayUIBackGroundLefttop"
 			, L"..\\Resources\\image\\UI\\mainUIexport_Lefttop.bmp");
 
@@ -90,7 +90,7 @@ namespace jm
 		uisrbgthree->SetImage(image);
 		uisrbgthree->SetScale(Vector2(0.8f, 0.8f));
 		uiRighttopbg->GetComponent<Transform>()->SetPosition(Vector2(1475.0f, 225.0f));
-		
+
 
 		image = Resources::Load<Texture>(L"PlayUIBackGroundRightbottom"
 			, L"..\\Resources\\image\\UI\\mainUIexport_Rightbottom.bmp");
@@ -119,6 +119,7 @@ namespace jm
 			, Vector2(0.0f, 0.0f), 0.05f);
 		at->CreateAnimationFolder(L"PlayerRightKick", L"..\\Resources\\image\\Player\\PlayerRightKick"
 			, Vector2(0.0f, 0.0f), 0.05f);
+		at->CreateAnimationFolder(L"PlayerDeath", L"..\\Resources\\image\\Player\\PlayerDeath");
 		at->PlayAnimation(L"PlayerRightStay", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
@@ -126,14 +127,20 @@ namespace jm
 		col->SetSize(Vector2(100.0f, 100.0f));
 
 		Monster* monsterone = object::Instantiate<Monster>(eLayerType::Monster);
-		Transform* motrone = monsterone->GetComponent<Transform>();
-		motrone->SetPosition(Vector2(885.0f, 390.0f));
+		tr = monsterone->GetComponent<Transform>();
+		tr->SetPosition(Vector2(885.0f, 390.0f));
 
-		Animator* mooneAt = monsterone->AddComponent<Animator>();
-		mooneAt->CreateAnimationFolder(L"MonsterRightStay", L"..\\Resources\\image\\Monster\\MonsterRightStay"
+		at = monsterone->AddComponent<Animator>();
+		at->CreateAnimationFolder(L"MonsterRightStay", L"..\\Resources\\image\\Monster\\MonsterRightStay"
 			, Vector2(0.0f, 0.0f), 0.05f);
-		mooneAt->PlayAnimation(L"MonsterRightStay", true);
-		mooneAt->SetScale(Vector2(0.8f, 0.8f));
+		at->CreateAnimationFolder(L"MonsterLeftStay", L"..\\Resources\\image\\Monster\\MonsterLeftStay"
+			, Vector2(0.0f, 0.0f), 0.05f);
+		at->CreateAnimationFolder(L"MonsterRightHit", L"..\\Resources\\image\\Monster\\MonsterRightHit"
+			, Vector2(0.0f, 0.0f), 0.05f);
+		at->CreateAnimationFolder(L"MonsterLeftHit", L"..\\Resources\\image\\Monster\\MonsterLeftHit"
+			, Vector2(0.0f, 0.0f), 0.05f);
+		at->PlayAnimation(L"MonsterRightStay", true);
+		at->SetScale(Vector2(0.8f, 0.8f));
 
 		col = monsterone->AddComponent<Collider>();
 		col->SetSize(Vector2(100.0f, 100.0f));
@@ -141,25 +148,54 @@ namespace jm
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
 
 		Monster* monstertwo = object::Instantiate<Monster>(eLayerType::Monster);
-		Transform* motrtwo = monstertwo->GetComponent<Transform>();
-		motrtwo->SetPosition(Vector2(805.0f, 310.0f));
+		tr = monstertwo->GetComponent<Transform>();
+		tr->SetPosition(Vector2(805.0f, 310.0f));
 
-		Animator* motwoAt = monstertwo->AddComponent<Animator>();
-		motwoAt->CreateAnimationFolder(L"MonsterRightStaytwo", L"..\\Resources\\image\\Monster\\MonsterRightStay"
+		at = monstertwo->AddComponent<Animator>();
+		at->CreateAnimationFolder(L"MonsterRightStaytwo", L"..\\Resources\\image\\Monster\\MonsterRightStay"
 			, Vector2(0.0f, 0.0f), 0.05f);
-		motwoAt->PlayAnimation(L"MonsterRightStaytwo", true);
-		motwoAt->SetScale(Vector2(0.8f, 0.8f));
+		at->PlayAnimation(L"MonsterRightStaytwo", true);
+		at->SetScale(Vector2(0.8f, 0.8f));
 
+		col = monstertwo->AddComponent<Collider>();
+		col->SetSize(Vector2(100.0f, 100.0f));
+
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
 
 		Monster* monsterthree = object::Instantiate<Monster>(eLayerType::Monster);
-		Transform* motrthree = monsterthree->GetComponent<Transform>();
-		motrthree->SetPosition(Vector2(725.0f, 390.0f));
+		tr = monsterthree->GetComponent<Transform>();
+		tr->SetPosition(Vector2(725.0f, 390.0f));
 
-		Animator* mothreeAt = monsterthree->AddComponent<Animator>();
-		mothreeAt->CreateAnimationFolder(L"MonsterRightStaythree", L"..\\Resources\\image\\Monster\\MonsterRightStay"
+		at = monsterthree->AddComponent<Animator>();
+		at->CreateAnimationFolder(L"MonsterRightStaythree", L"..\\Resources\\image\\Monster\\MonsterRightStay"
 			, Vector2(0.0f, 0.0f), 0.05f);
-		mothreeAt->PlayAnimation(L"MonsterRightStaythree", true);
-		mothreeAt->SetScale(Vector2(0.8f, 0.8f));
+		at->PlayAnimation(L"MonsterRightStaythree", true);
+		at->SetScale(Vector2(0.8f, 0.8f));
+
+		col = monsterthree->AddComponent<Collider>();
+		col->SetSize(Vector2(100.0f, 100.0f));
+
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
+
+		BackGround* fireone = object::Instantiate<BackGround>(eLayerType::BackGround);
+		tr = fireone->GetComponent<Transform>();
+		tr->SetPosition(Vector2(563.0f, 235.0f));
+
+		at = fireone->AddComponent<Animator>();
+		at->CreateAnimationFolder(L"fireone", L"..\\Resources\\image\\BackGround\\fire"
+			, Vector2(0.0f, 0.0f), 0.05f);
+		at->PlayAnimation(L"fireone", true);
+		at->SetScale(Vector2(0.5f, 0.5f));
+
+		BackGround* firetwo = object::Instantiate<BackGround>(eLayerType::BackGround);
+		tr = firetwo->GetComponent<Transform>();
+		tr->SetPosition(Vector2(1045.0f, 435.0f));
+
+		at = firetwo->AddComponent<Animator>();
+		at->CreateAnimationFolder(L"firetwo", L"..\\Resources\\image\\BackGround\\fire"
+			, Vector2(0.0f, 0.0f), 0.05f);
+		at->PlayAnimation(L"firetwo", true);
+		at->SetScale(Vector2(0.5f, 0.5f));
 	}
 	void PlayScene::Update()
 	{

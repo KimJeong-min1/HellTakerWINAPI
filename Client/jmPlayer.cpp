@@ -70,18 +70,42 @@ namespace jm
 	{
 		Animator* animator = GetComponent<Animator>();
 
-		if (Input::GetKeyDown(eKeyCode::W) || Input::GetKeyDown(eKeyCode::A)
-			|| Input::GetKeyDown(eKeyCode::S) || Input::GetKeyDown(eKeyCode::D))
+		if (Input::GetKeyDown(eKeyCode::A))
 		{
-			Animator* animator = GetComponent<Animator>();
-			if (animator->IsActiveAnimaition(L"PlayerLeftStay") == true)
+			if (animator->IsActiveAnimaition(L"PlayerRightStay"))
 			{
 				animator->PlayAnimation(L"PlayerLeftKick", false);
 				mState = eState::Kick;
 			}
-			else if (animator->IsActiveAnimaition(L"PlayerRightKick") == true)
+			else if (animator->IsActiveAnimaition(L"PlayerLeftStay"))
+			{
+				animator->PlayAnimation(L"PlayerLeftKick", false);
+				mState = eState::Kick;
+			}
+		}
+		else if (Input::GetKeyDown(eKeyCode::D))
+		{
+			if (animator->IsActiveAnimaition(L"PlayerRightStay"))
 			{
 				animator->PlayAnimation(L"PlayerRightKick", false);
+				mState = eState::Kick;
+			}
+			else if (animator->IsActiveAnimaition(L"PlayerLeftStay"))
+			{
+				animator->PlayAnimation(L"PlayerRightKick", false);
+				mState = eState::Kick;
+			}
+		}
+		else if (Input::GetKeyDown(eKeyCode::S) || Input::GetKeyDown(eKeyCode::W))
+		{
+			if (animator->IsActiveAnimaition(L"PlayerRightStay"))
+			{
+				animator->PlayAnimation(L"PlayerRightKick", false);
+				mState = eState::Kick;
+			}
+			else if (animator->IsActiveAnimaition(L"PlayerLeftStay"))
+			{
+				animator->PlayAnimation(L"PlayerLeftKick", false);
 				mState = eState::Kick;
 			}
 		}
@@ -97,12 +121,12 @@ namespace jm
 
 		if (Input::GetKey(eKeyCode::W) || Input::GetKey(eKeyCode::Up))
 		{
-			if (animator->IsActiveAnimaition(L"PlayerRightStay") == true)
+			if (animator->IsActiveAnimaition(L"PlayerRightStay"))
 			{
 				animator->PlayAnimation(L"PlayerRightMove", true);
 				mState = eState::Move;
 			}
-			else if (animator->IsActiveAnimaition(L"PlayerLeftStay") == true)
+			else if (animator->IsActiveAnimaition(L"PlayerLeftStay"))
 			{
 				animator->PlayAnimation(L"PlayerLeftMove", true);
 				mState = eState::Move;
@@ -115,12 +139,12 @@ namespace jm
 		}
 		else if (Input::GetKey(eKeyCode::S) || Input::GetKey(eKeyCode::Down))
 		{
-			if (animator->IsActiveAnimaition(L"PlayerRightStay") == true)
+			if (animator->IsActiveAnimaition(L"PlayerRightStay"))
 			{
 				animator->PlayAnimation(L"PlayerRightMove", true);
 				mState = eState::Move;
 			}
-			else if (animator->IsActiveAnimaition(L"PlayerLeftStay") == true)
+			else if (animator->IsActiveAnimaition(L"PlayerLeftStay"))
 			{
 				animator->PlayAnimation(L"PlayerLeftMove", true);
 				mState = eState::Move;
@@ -130,6 +154,12 @@ namespace jm
 		{
 			animator->PlayAnimation(L"PlayerRightMove", true);
 			mState = eState::Move;
+		}
+
+		if (Input::GetKeyDown(eKeyCode::V))
+		{
+			animator->PlayAnimation(L"PlayerDeath", false);
+			mState = eState::Death;
 		}
 	}
 
@@ -162,12 +192,12 @@ namespace jm
 			|| Input::GetKey(eKeyCode::Down) || Input::GetKey(eKeyCode::Right))
 		{
 			Animator* animator = GetComponent<Animator>();
-			if (animator->IsActiveAnimaition(L"PlayerLeftMove") == true)
+			if (animator->IsActiveAnimaition(L"PlayerLeftMove"))
 			{
 				animator->PlayAnimation(L"PlayerLeftStay", true);
 				mState = eState::Idle;
 			}
-			else if (animator->IsActiveAnimaition(L"PlayerRightMove") == true)
+			else if (animator->IsActiveAnimaition(L"PlayerRightMove"))
 			{
 				animator->PlayAnimation(L"PlayerRightStay", true);
 				mState = eState::Idle;
@@ -200,5 +230,15 @@ namespace jm
 
 	void Player::Dead()
 	{
+		Animator* animator = GetComponent<Animator>();
+		
+		if (animator->IsActiveAnimaition(L"PlayerDeath"))
+		{
+			if (animator->IsActiveAnimaitionComplete())
+			{
+				animator->PlayAnimation(L"PlayerRightStay", true);
+				mState = eState::Idle;
+			}
+		}
 	}
 }

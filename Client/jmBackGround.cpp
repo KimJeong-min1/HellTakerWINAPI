@@ -3,6 +3,9 @@
 #include "jmInput.h"
 #include "jmTime.h"
 #include "jmSpriteRenderer.h"
+#include "jmTexture.h"
+#include "jmReSources.h"
+#include "jmObject.h"
 
 namespace jm
 {
@@ -18,7 +21,7 @@ namespace jm
 
 	void BackGround::Initialize()
 	{
-
+		
 	}
 
 	void BackGround::Update()

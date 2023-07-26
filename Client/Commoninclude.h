@@ -22,6 +22,7 @@ namespace jm::enums
 		BackGround,
 		Player,
 		Monster,
+		Wall,
 		Devil,
 		Angel,
 		Effect,
