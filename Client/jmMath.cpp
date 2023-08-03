@@ -1,6 +1,5 @@
 #include "jmMath.h"
 
-
 namespace jm::math
 {
 	Vector2 Vector2::zero = Vector2(0.0f, 0.0f);

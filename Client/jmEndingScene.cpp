@@ -26,7 +26,7 @@ namespace jm
 			, L"..\\Resources\\image\\Texture2D\\dialogueDeathExport0009.png");
 
 		BackGround* bg = object::Instantiate<BackGround>(eLayerType::BackGround);
-		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
+		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>(L"EndingSceneComponent");
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(1.1f, 1.9f));
 		bg->GetComponent<Transform>()->SetPosition(Vector2(800.0f, 450.0f));

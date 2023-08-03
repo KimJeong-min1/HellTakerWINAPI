@@ -10,6 +10,7 @@ namespace jm
 
 	Component::~Component()
 	{
+	
 	}
 
 	void Component::Initialize()

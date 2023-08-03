@@ -11,6 +11,8 @@
 #include "jmAnimator.h"
 #include "jmUI.h"
 #include "jmCollisionManager.h"
+#include "jmTile.h"
+#include "jmToolScene.h"
 
 namespace jm
 {
@@ -29,7 +31,7 @@ namespace jm
 			, L"..\\Resources\\image\\Chapter\\chapterBG0001.bmp");
 
 		BackGround* bg = object::Instantiate<BackGround>(eLayerType::BackGround);
-		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
+		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>(L"PlaySceneChapterComponent");
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(0.8f, 0.8f));
 		bg->GetComponent<Transform>()->SetPosition(Vector2(800.0f, 450.0f));
@@ -38,13 +40,13 @@ namespace jm
 			, L"..\\Resources\\image\\Sprite\\FLAMEbase0001.png");
 
 		BackGround* Flbaseonone = object::Instantiate<BackGround>(eLayerType::BackGround);
-		SpriteRenderer* Flbaseonsr = Flbaseonone->AddComponent<SpriteRenderer>();
+		SpriteRenderer* Flbaseonsr = Flbaseonone->AddComponent<SpriteRenderer>(L"PlaySceneFlbaseon1Component");
 		Flbaseonsr->SetImage(image);
 		Flbaseonsr->SetScale(Vector2(0.8f, 0.8f));
 		Flbaseonone->GetComponent<Transform>()->SetPosition(Vector2(563.0f, 265.0f));
 
 		BackGround* Flbaseontwo = object::Instantiate<BackGround>(eLayerType::BackGround);
-		Flbaseonsr = Flbaseontwo->AddComponent<SpriteRenderer>();
+		Flbaseonsr = Flbaseontwo->AddComponent<SpriteRenderer>(L"PlaySceneFlbaseon2Component");
 		Flbaseonsr->SetImage(image);
 		Flbaseonsr->SetScale(Vector2(0.8f, 0.8f));
 		Flbaseontwo->GetComponent<Transform>()->SetPosition(Vector2(1045.0f, 465.0f));
@@ -53,13 +55,13 @@ namespace jm
 			, L"..\\Resources\\image\\Sprite\\FLAMEbase0002.png");
 
 		BackGround* Flbaseoffone = object::Instantiate<BackGround>(eLayerType::BackGround);
-		SpriteRenderer* Flbaseoffsr = Flbaseoffone->AddComponent<SpriteRenderer>();
+		SpriteRenderer* Flbaseoffsr = Flbaseoffone->AddComponent<SpriteRenderer>(L"PlaySceneFlbaseoff1Component");
 		Flbaseoffsr->SetImage(image);
 		Flbaseoffsr->SetScale(Vector2(0.8f, 0.8f));
 		Flbaseoffone->GetComponent<Transform>()->SetPosition(Vector2(798.0f, 180.0f));
 
 		BackGround* Flbaseofftwo = object::Instantiate<BackGround>(eLayerType::BackGround);
-		Flbaseoffsr = Flbaseofftwo->AddComponent<SpriteRenderer>();
+		Flbaseoffsr = Flbaseofftwo->AddComponent<SpriteRenderer>(L"PlaySceneFlbaseoff2Component");
 		Flbaseoffsr->SetImage(image);
 		Flbaseoffsr->SetScale(Vector2(0.8f, 0.8f));
 		Flbaseofftwo->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 500.0f));
@@ -68,7 +70,7 @@ namespace jm
 			, L"..\\Resources\\image\\UI\\mainUIexport_Lefttop.bmp");
 
 		UI* uiLefttopbg = object::Instantiate<UI>(eLayerType::UI);
-		SpriteRenderer* uibgsr = uiLefttopbg->AddComponent<SpriteRenderer>();
+		SpriteRenderer* uibgsr = uiLefttopbg->AddComponent<SpriteRenderer>(L"PlaySceneLeftUiTopComponent");
 		uibgsr->SetImage(image);
 		uibgsr->SetScale(Vector2(0.8f, 0.8f));
 		uiLefttopbg->GetComponent<Transform>()->SetPosition(Vector2(125.0f, 225.0f));
@@ -77,7 +79,7 @@ namespace jm
 			, L"..\\Resources\\image\\UI\\mainUIexport_Leftbottom.bmp");
 
 		UI* uiLeftbottombg = object::Instantiate<UI>(eLayerType::UI);
-		SpriteRenderer* uisrbgtwo = uiLeftbottombg->AddComponent<SpriteRenderer>();
+		SpriteRenderer* uisrbgtwo = uiLeftbottombg->AddComponent<SpriteRenderer>(L"PlaySceneLeftUIBottomComponent");
 		uisrbgtwo->SetImage(image);
 		uisrbgtwo->SetScale(Vector2(0.8f, 0.8f));
 		uiLeftbottombg->GetComponent<Transform>()->SetPosition(Vector2(194.0f, 626.0f));
@@ -86,7 +88,7 @@ namespace jm
 			, L"..\\Resources\\image\\UI\\mainUIexport_Righttop.bmp");
 
 		UI* uiRighttopbg = object::Instantiate<UI>(eLayerType::UI);
-		SpriteRenderer* uisrbgthree = uiRighttopbg->AddComponent<SpriteRenderer>();
+		SpriteRenderer* uisrbgthree = uiRighttopbg->AddComponent<SpriteRenderer>(L"PlaySceneRightUiTopComponent");
 		uisrbgthree->SetImage(image);
 		uisrbgthree->SetScale(Vector2(0.8f, 0.8f));
 		uiRighttopbg->GetComponent<Transform>()->SetPosition(Vector2(1475.0f, 225.0f));
@@ -96,16 +98,16 @@ namespace jm
 			, L"..\\Resources\\image\\UI\\mainUIexport_Rightbottom.bmp");
 
 		UI* uiRightbottombg = object::Instantiate<UI>(eLayerType::UI);
-		SpriteRenderer* uisrbgfour = uiRightbottombg->AddComponent<SpriteRenderer>();
+		SpriteRenderer* uisrbgfour = uiRightbottombg->AddComponent<SpriteRenderer>(L"PlaySceneRightUiBottomComponent");
 		uisrbgfour->SetImage(image);
 		uisrbgfour->SetScale(Vector2(0.8f, 0.8f));
 		uiRightbottombg->GetComponent<Transform>()->SetPosition(Vector2(1406.0f, 626.0f));
 
-		Player* player = object::Instantiate<Player>(eLayerType::Player);
+		Player* player = object::Instantiate<Player>(eLayerType::Player,L"Player");
 		Transform* tr = player->GetComponent<Transform>();
 		tr->SetPosition(Vector2(960.0f, 230.0f));
 
-		Animator* at = player->AddComponent<Animator>();
+		Animator* at = player->AddComponent<Animator>(L"PlayScenePlayerAnimation");
 
 		at->CreateAnimationFolder(L"PlayerRightStay", L"..\\Resources\\image\\Player\\PlayerRightStay"
 			, Vector2(0.0f, 0.0f), 0.05f);
@@ -123,14 +125,14 @@ namespace jm
 		at->PlayAnimation(L"PlayerRightStay", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		Collider* col = player->AddComponent<Collider>();
+		Collider* col = player->AddComponent<Collider>(L"PlayScenePlayerCollider");
 		col->SetSize(Vector2(100.0f, 100.0f));
 
-		Monster* monsterone = object::Instantiate<Monster>(eLayerType::Monster);
+		Monster* monsterone = object::Instantiate<Monster>(eLayerType::Monster,L"Monster1");
 		tr = monsterone->GetComponent<Transform>();
 		tr->SetPosition(Vector2(885.0f, 390.0f));
 
-		at = monsterone->AddComponent<Animator>();
+		at = monsterone->AddComponent<Animator>(L"PlaySceneMonsterAnimation");
 		at->CreateAnimationFolder(L"MonsterRightStay", L"..\\Resources\\image\\Monster\\MonsterRightStay"
 			, Vector2(0.0f, 0.0f), 0.05f);
 		at->CreateAnimationFolder(L"MonsterLeftStay", L"..\\Resources\\image\\Monster\\MonsterLeftStay"
@@ -142,37 +144,37 @@ namespace jm
 		at->PlayAnimation(L"MonsterRightStay", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = monsterone->AddComponent<Collider>();
+		col = monsterone->AddComponent<Collider>(L"PlaySceneMonsterCollider");
 		col->SetSize(Vector2(100.0f, 100.0f));
 
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
 
-		Monster* monstertwo = object::Instantiate<Monster>(eLayerType::Monster);
+		Monster* monstertwo = object::Instantiate<Monster>(eLayerType::Monster,L"PlaySceneMonster2");
 		tr = monstertwo->GetComponent<Transform>();
 		tr->SetPosition(Vector2(805.0f, 310.0f));
 
-		at = monstertwo->AddComponent<Animator>();
+		at = monstertwo->AddComponent<Animator>(L"PlaySceneMonster2Animation");
 		at->CreateAnimationFolder(L"MonsterRightStaytwo", L"..\\Resources\\image\\Monster\\MonsterRightStay"
 			, Vector2(0.0f, 0.0f), 0.05f);
 		at->PlayAnimation(L"MonsterRightStaytwo", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = monstertwo->AddComponent<Collider>();
+		col = monstertwo->AddComponent<Collider>(L"PlaySceneMonster2Collider");
 		col->SetSize(Vector2(100.0f, 100.0f));
 
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
 
-		Monster* monsterthree = object::Instantiate<Monster>(eLayerType::Monster);
+		Monster* monsterthree = object::Instantiate<Monster>(eLayerType::Monster,L"Monster3");
 		tr = monsterthree->GetComponent<Transform>();
 		tr->SetPosition(Vector2(725.0f, 390.0f));
 
-		at = monsterthree->AddComponent<Animator>();
+		at = monsterthree->AddComponent<Animator>(L"PlaySceneMonster3Animation");
 		at->CreateAnimationFolder(L"MonsterRightStaythree", L"..\\Resources\\image\\Monster\\MonsterRightStay"
 			, Vector2(0.0f, 0.0f), 0.05f);
 		at->PlayAnimation(L"MonsterRightStaythree", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = monsterthree->AddComponent<Collider>();
+		col = monsterthree->AddComponent<Collider>(L"PlaySceneMonster3Collider");
 		col->SetSize(Vector2(100.0f, 100.0f));
 
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
@@ -181,7 +183,7 @@ namespace jm
 		tr = fireone->GetComponent<Transform>();
 		tr->SetPosition(Vector2(563.0f, 235.0f));
 
-		at = fireone->AddComponent<Animator>();
+		at = fireone->AddComponent<Animator>(L"PlaySceneFire1Animation");
 		at->CreateAnimationFolder(L"fireone", L"..\\Resources\\image\\BackGround\\fire"
 			, Vector2(0.0f, 0.0f), 0.05f);
 		at->PlayAnimation(L"fireone", true);
@@ -191,7 +193,7 @@ namespace jm
 		tr = firetwo->GetComponent<Transform>();
 		tr->SetPosition(Vector2(1045.0f, 435.0f));
 
-		at = firetwo->AddComponent<Animator>();
+		at = firetwo->AddComponent<Animator>(L"PlaySceneFire2Animation");
 		at->CreateAnimationFolder(L"firetwo", L"..\\Resources\\image\\BackGround\\fire"
 			, Vector2(0.0f, 0.0f), 0.05f);
 		at->PlayAnimation(L"firetwo", true);
@@ -216,6 +218,10 @@ namespace jm
 		if (Input::GetKeyDown(eKeyCode::E))
 		{
 			SceneManager::LoadScene(L"EndingScene");
+		}
+		if (Input::GetKeyDown(eKeyCode::R))
+		{
+			SceneManager::LoadScene(L"ToolScene");
 		}
 	}
 	void PlayScene::Render(HDC hdc)

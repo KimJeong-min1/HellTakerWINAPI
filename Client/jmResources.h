@@ -36,7 +36,7 @@ namespace jm
 			resource->SetName(name);
 			resource->SetPath(path);
 			mResources.insert(std::make_pair(name, resource));
-
+			
 			return resource;
 		}
 

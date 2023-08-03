@@ -3,7 +3,7 @@
 #include "jmPlayScene.h"
 #include "jmCutScene.h"
 #include "jmEndingScene.h"
-#include "jmInput.h"
+#include "jmToolScene.h"
 
 
 namespace jm
@@ -17,8 +17,9 @@ namespace jm
 		CreateScene<PlayScene>(L"PlayScene");
 		CreateScene<CutScene>(L"CutScene");
 		CreateScene<EndingScene>(L"EndingScene");
+		CreateScene<ToolScene>(L"ToolScene");
 
-		LoadScene(L"TitleScene");
+		LoadScene(L"ToolScene");
 	}
 
 	void SceneManager::Update()

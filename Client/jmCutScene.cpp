@@ -25,7 +25,7 @@ namespace jm
 			, L"..\\Resources\\image\\Cutscene\\cutscene_0002_Group-2.png");
 
 		BackGround* bg = object::Instantiate<BackGround>(eLayerType::BackGround);
-		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
+		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>(L"CutSceneComponent");
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(1.3f, 1.4f));
 		bg->GetComponent<Transform>()->SetPosition(Vector2(800.0f, 450.0f));

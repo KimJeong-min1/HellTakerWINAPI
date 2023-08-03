@@ -19,8 +19,12 @@ namespace jm
 		void SetScale(Vector2 scale) {	mScale = scale; }
 		float GetAlpha() { return mAlpha; }
 		void SetAlpha(float alpha) { mAlpha = alpha; }
+		void SetTile(int x, int y) { mbTile = true; mTileIndexX = x; mTileIndexY = y; }
 	
 	private:
+		bool mbTile;
+		int mTileIndexX;
+		int mTileIndexY;
 		//Gdiplus::Image* mTexture;
 		Texture* mTexture;
 		Vector2 mScale;

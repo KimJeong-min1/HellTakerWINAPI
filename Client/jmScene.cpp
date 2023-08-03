@@ -12,6 +12,7 @@ namespace jm
 
 	Scene::~Scene()
 	{
+		mLayers.clear();
 	}
 
 	void Scene::Initialize()

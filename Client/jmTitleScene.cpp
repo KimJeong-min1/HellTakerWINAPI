@@ -24,7 +24,7 @@ namespace jm
 
 		BackGround* bg = object::Instantiate<BackGround>(eLayerType::BackGround);
 		bg->GetComponent<Transform>()->SetPosition(Vector2(800.0f, 450.0f));
-		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
+		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>(L"TitleSceneBGComponent");
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(1.0f, 2.0f));
 
@@ -33,7 +33,7 @@ namespace jm
 
 		Devil* devil = object::Instantiate<Devil>(eLayerType::Devil);
 		devil->GetComponent<Transform>()->SetPosition(Vector2(836.0f, 300.0f));
-		SpriteRenderer* desr = devil->AddComponent<SpriteRenderer>();
+		SpriteRenderer* desr = devil->AddComponent<SpriteRenderer>(L"TitleSceneDVComponent");
 		desr->SetImage(image);
 		desr->SetScale(Vector2(0.8f, 0.8f));
 		

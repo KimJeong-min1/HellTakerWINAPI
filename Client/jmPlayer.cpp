@@ -3,6 +3,8 @@
 #include "jmInput.h"
 #include "jmTime.h"
 #include "jmAnimator.h"
+#include "jmCollider.h"
+#include "jmMonster.h"
 
 namespace jm
 {
@@ -19,6 +21,11 @@ namespace jm
 	void Player::Update()
 	{
 		GameObject::Update();
+
+		Transform* tr = GetComponent<Transform>();
+		//pixel 층돌
+		//COLORREF rgb = mFloorTexture->GetTexturePixel(tr->GetPosition().x, tr->GetPosition().y + 48);
+		
 		switch (mState)
 		{
 		case Player::eState::Idle:
@@ -44,29 +51,18 @@ namespace jm
 	{
 		GameObject::Render(hdc);
 	}
-
-	void Player::OnCollisionEnter(Collider* othher)
+	// other = 플레이어의 충돌체와 충돌한 다른 충돌체
+	void Player::OnCollisionEnter(Collider* other)
 	{
-		/*Animator* animator = GetComponent<Animator>();
-		
-		if (Input::GetKeyDown(eKeyCode::W) || Input::GetKeyDown(eKeyCode::A)
-			|| Input::GetKeyDown(eKeyCode::S) || Input::GetKeyDown(eKeyCode::D))
+		Monster* CollisionMonster = (Monster*)other->GetOwner();
+		Animator* animator = GetComponent<Animator>();
+		if (animator->IsActiveAnimaition(L"PlayerLeftKick"))
 		{
-			Animator* animator = GetComponent<Animator>();
-			if (animator->IsActiveAnimaition(L"PlayerLeftStay") == true)
-			{
-				animator->PlayAnimation(L"PlayerLeftKick", false);
-				mState = eState::Kick;
-			}
-			else if (animator->IsActiveAnimaition(L"PlayerRightKick") == true)
-			{
-				animator->PlayAnimation(L"PlayerRightKick", false);
-				mState = eState::Kick;
-			}
-		}*/
+			CollisionMonster->Hit();
+		}
 	}
 
-	void Player::OnCollisionStay(Collider* othher)
+	void Player::OnCollisionStay(Collider* other)
 	{
 		Animator* animator = GetComponent<Animator>();
 

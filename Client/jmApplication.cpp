@@ -59,7 +59,9 @@ namespace jm
 		Time::Initialize();
 		// Input 클래스 초기화
 		Input::Initialize();
+		// Collosion 클래스 초기화
 		CollisionManager::Initialize();
+		// SceneManager 클래스 초기화
 		SceneManager::Initialize();
 	}
 
@@ -90,12 +92,16 @@ namespace jm
 	{
 		//Rectangle(mhdc, 100, 100, 200, 200);
 		//HBRUSH brush = CreateSolidBrush(RGB(125, 125, 125));
+		// 새로운 색깔의 붓을생성
 		HBRUSH brush = CreateSolidBrush(RGB(2, 2, 27));
+		// 기존의 브러쉬에 새로운 붓을 대입
 		HBRUSH oldBrush = (HBRUSH)SelectObject(mBackHdc, brush);
 		
 		// 화면 전체를 흰색으로 그려주는 함수
 		Rectangle(mBackHdc, -1, -1, mWidth + 1, mHeight + 1);
+		// 붓 갈아끼우기
 		SelectObject(mBackHdc, oldBrush);
+		// 붓 지우기
 		DeleteObject(brush);
 
 		// 프레임 계산을 윈도우에 그려주는 함수

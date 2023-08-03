@@ -60,15 +60,25 @@ namespace jm
 		// 작동이 된다.
 		// 무조건 최적화를 해야한다
 		// __forceinline을 쓰면 강제로 최적화를 한다
+		// 키를 눌렀을 때
 		__forceinline static bool GetKeyDown(eKeyCode code) { return mKeys[(int)code].state == eKeyState::Down; }
+		// 키가 눌렸다가 떼졌을 때
 		__forceinline static bool GetKeyUp(eKeyCode code) { return mKeys[(int)code].state == eKeyState::Up; }
+		// 키가 눌리는 중
 		__forceinline static bool GetKey(eKeyCode code) { return mKeys[(int)code].state == eKeyState::Pressed; }
+		// 마우스 위치를 가져오는 함수
+		__forceinline static math::Vector2 GetMousePosition()
+		{
+			return mMousePosition;
+		}
 
 	private:
 		// static 전역변수 처럼 동작은 하되 클래스내부에 작동하게하고 싶은 전역변수
 		// 전역변수같은 경우에는 어떤경우에든 쓸수있지만
 		// 클래스 내부의 static 변수는 클래스 내부의 접근제한지정자를 쓸수 있냐 없냐의 차이
 		static std::vector<Key> mKeys;
+		// 마우스의 위치를 담을 Vector2형 변수
+		static math::Vector2 mMousePosition;
 	};
 
 }

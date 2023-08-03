@@ -117,7 +117,7 @@ namespace jm
 				right->OnCollisionStay(left);
 			}
 		}
-		else
+		else // 충돌에서 벗어날 때
 		{
 			if (iter->second == true)
 			{

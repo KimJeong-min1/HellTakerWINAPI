@@ -102,6 +102,9 @@
     <Filter Include="Contents\Stageone\GameObject\Wall">
       <UniqueIdentifier>{8a6ea64c-43ee-4959-a070-37ea4ddfd8b5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Tool">
+      <UniqueIdentifier>{94e5e32e-cec9-4840-9d16-7578a441aae8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -179,9 +182,6 @@
     <ClInclude Include="jmText.h">
       <Filter>Contents\Stageone\GameObject\Text</Filter>
     </ClInclude>
-    <ClInclude Include="jmMonster.h">
-      <Filter>Contents\Stageone\GameObject\Monster</Filter>
-    </ClInclude>
     <ClInclude Include="jmEndingScene.h">
       <Filter>Contents\Stageone\Scene</Filter>
     </ClInclude>
@@ -214,6 +214,15 @@
     </ClInclude>
     <ClInclude Include="jmWall.h">
       <Filter>Contents\Stageone\GameObject\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="jmTile.h">
+      <Filter>Engine\Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="jmToolScene.h">
+      <Filter>Contents\Stageone\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="jmMonster.h">
+      <Filter>Contents\Stageone\GameObject\Monster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -323,6 +332,12 @@
     </ClCompile>
     <ClCompile Include="jmWall.cpp">
       <Filter>Contents\Stageone\GameObject\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="jmTile.cpp">
+      <Filter>Engine\Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="jmToolScene.cpp">
+      <Filter>Contents\Stageone\Scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

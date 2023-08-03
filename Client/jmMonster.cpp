@@ -13,6 +13,10 @@ namespace jm
 	}
 	void Monster::Initialize()
 	{
+		if (!mMonsterAnimator)
+		{
+			mMonsterAnimator = GetComponent<Animator>();
+		}
 	}
 	void Monster::Update()
 	{
@@ -42,49 +46,12 @@ namespace jm
 	}
 	void Monster::OnCollisionStay(Collider* othher)
 	{
-		Animator* animator = GetComponent<Animator>();
-
-		if (Input::GetKeyDown(eKeyCode::A))
-		{
-			if (animator->IsActiveAnimaition(L"MonsterRightStay"))
-			{
-				animator->PlayAnimation(L"MonsterRightHit", false);
-				mState = eState::Hit;
-			}
-			else if (animator->IsActiveAnimaition(L"MonsterLeftStay"))
-			{
-				animator->PlayAnimation(L"MonsterRightHit", false);
-				mState = eState::Hit;
-			}
-		}
-		else if(Input::GetKeyDown(eKeyCode::D))
-		{
-			if (animator->IsActiveAnimaition(L"MonsterRightStay"))
-			{
-				animator->PlayAnimation(L"MonsterLeftHit", false);
-				mState = eState::Hit;
-			}
-			else if (animator->IsActiveAnimaition(L"MonsterLeftStay"))
-			{
-				animator->PlayAnimation(L"MonsterLeftHit", false);
-				mState = eState::Hit;
-			}
-		}
-		else if (Input::GetKeyDown(eKeyCode::S) || Input::GetKeyDown(eKeyCode::W))
-		{
-			if (animator->IsActiveAnimaition(L"MonsterRightStay"))
-			{
-				animator->PlayAnimation(L"MonsterRightHit", false);
-				mState = eState::Hit;
-			}
-			else if (animator->IsActiveAnimaition(L"MonsterLeftStay"))
-			{
-				animator->PlayAnimation(L"MonsterLeftHit", false);
-				mState = eState::Hit;
-			}
-		}
+		
 	}
 	void Monster::OnCollisionExit(Collider* othher)
+	{
+	}
+	void Monster::ChagenAnimation(const std::wstring& AnimName)
 	{
 	}
 	void Monster::Idle()
@@ -92,22 +59,20 @@ namespace jm
 	}
 	void Monster::Hit()
 	{
-		Animator* animator = GetComponent<Animator>();
 
-
-		if (animator->IsActiveAnimaition(L"MonsterLeftHit"))
+		if (mMonsterAnimator->IsActiveAnimaition(L"MonsterLeftHit"))
 		{
-			if (animator->IsActiveAnimaitionComplete())
+			if (mMonsterAnimator->IsActiveAnimaitionComplete())
 			{
-				animator->PlayAnimation(L"MonsterLeftStay", true);
+				mMonsterAnimator->PlayAnimation(L"MonsterLeftStay", true);
 				mState = eState::Idle;
 			}
 		}
-		else if (animator->IsActiveAnimaition(L"MonsterRightHit"))
+		else if (mMonsterAnimator->IsActiveAnimaition(L"MonsterRightHit"))
 		{
-			if (animator->IsActiveAnimaitionComplete())
+			if (mMonsterAnimator->IsActiveAnimaitionComplete())
 			{
-				animator->PlayAnimation(L"MonsterRightStay", true);
+				mMonsterAnimator->PlayAnimation(L"MonsterRightStay", true);
 				mState = eState::Idle;
 			}
 		}

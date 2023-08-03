@@ -31,6 +31,9 @@ namespace jm
 			, Vector2 scale = Vector2::one  
 			, float alpha = 1.0f
 			, float rotate = 0.0f);
+		
+		COLORREF GetTexturePixel(int x, int y);
+
 
 		UINT GetWidth() { return mWidth; }
 		void SetWidth(UINT width) { mWidth = width; }

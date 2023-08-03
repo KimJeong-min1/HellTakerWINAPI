@@ -30,6 +30,7 @@ namespace jm
 		mPrevFrequency.QuadPart = mCurFrequency.QuadPart;
 	}
 
+	// 
 	void Time::Render(HDC hdc)
 	{
 		static float timecheck = 0.0f;

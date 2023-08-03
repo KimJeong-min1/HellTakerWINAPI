@@ -24,10 +24,13 @@ namespace jm
 		virtual void OnCollisionStay(class Collider* othher) override;
 		virtual void OnCollisionExit(class Collider* othher) override;
 
+		void ChagenAnimation(const std::wstring& AnimName);
+
 		void Idle();
 		void Hit();
 
 	private:
 		eState mState;
+		class Animator* mMonsterAnimator;
 	};
 }

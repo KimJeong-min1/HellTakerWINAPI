@@ -1,7 +1,12 @@
 #include "jmInput.h"
+#include "jmApplication.h"
+
+extern jm::Application application;
+
 namespace jm
 {
 	std::vector<Input::Key> Input::mKeys = {};
+	math::Vector2 Input::mMousePosition = math::Vector2::zero;
 
 	int ASCII[(int)eKeyCode::End] =
 	{
@@ -60,6 +65,14 @@ namespace jm
 				mKeys[i].bPressed = false;
 			}
 		}
+		// 마우스 위치를 받기위한 포인트형 변수
+		POINT mousePos = {};
+		// 마우스 위치를 가져와주는 함수
+		GetCursorPos(&mousePos);
+		// 마우스 위치를 더욱 화면에 맞게 변환?
+		ScreenToClient(application.GetHwnd(), &mousePos);
+		mMousePosition.x = (float)mousePos.x;
+		mMousePosition.y = (float)mousePos.y;
 	}
 
 }

@@ -1,16 +1,28 @@
 #include "jmGameObject.h"
 #include "jmTransform.h"
 #include "jmSpriteRenderer.h"
+#include "jmScene.h"
 
 namespace jm
 {
 	GameObject::GameObject()
+		: mState(eState::Active)
 	{
-		AddComponent<Transform>();
+		AddComponent<Transform>(L"TransformComponent");
 	}
 
 	GameObject::~GameObject()
 	{
+		for (Component* comp : mComponents)
+		{
+			if (nullptr != comp)
+			{
+				delete comp;
+				comp = nullptr;
+			}
+		}
+
+		mComponents.clear();
 	}
 
 	void GameObject::Initialize()
@@ -43,6 +55,16 @@ namespace jm
 
 	void GameObject::OnCollisionExit(Collider* other)
 	{
+	}
+
+	void GameObject::SetScene(Scene* scene)
+	{
+		mScene = scene;
+	}
+
+	Scene* GameObject::GetScene() const
+	{
+		return mScene;
 	}
 
 }

@@ -13,9 +13,11 @@ namespace jm
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
-
+		// 충돌이 되었을 때
 		void OnCollisionEnter(Collider* other);
+		// 충돌 중일 때
 		void OnCollisionStay(Collider* other);
+		// 충돌에서 빠져나갈 때
 		void OnCollisionExit(Collider* other);
 
 		Vector2 GetSize() { return mSize; }

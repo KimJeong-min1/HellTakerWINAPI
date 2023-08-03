@@ -5,6 +5,10 @@
 #include "Client.h"
 #include "jmApplication.h"
 
+#include "jmTexture.h"
+#include "jmResources.h"
+#include "jmInput.h"
+#include "jmTile.h"
 
 #define MAX_LOADSTRING 100
 
@@ -18,10 +22,11 @@ ULONG_PTR gdiplusToken;
 Gdiplus::GdiplusStartupInput gdiplusStartupInput;
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
-ATOM                MyRegisterClass(HINSTANCE hInstance);
+ATOM                MyRegisterClass(HINSTANCE hInstance, const wchar_t* name, WNDPROC proc);
 // 초기화 해주는 함수
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
+//LRESULT CALLBACK    WndToolProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -31,13 +36,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
     // TODO: 여기에 코드를 입력합니다.
 
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_CLIENT, szWindowClass, MAX_LOADSTRING);
-    MyRegisterClass(hInstance);
+    MyRegisterClass(hInstance, szWindowClass, WndProc);
+    //MyRegisterClass(hInstance, L"Tool", WndToolProc);
 
     // 애플리케이션 초기화를 수행합니다:
     if (!InitInstance (hInstance, nCmdShow))
@@ -87,13 +94,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 //
 //  용도: 창 클래스를 등록합니다.
 //
-ATOM MyRegisterClass(HINSTANCE hInstance)
+ATOM MyRegisterClass(HINSTANCE hInstance, const wchar_t* name, WNDPROC proc)
 {
     WNDCLASSEXW wcex;
 
     wcex.cbSize         = sizeof(WNDCLASSEX);
     wcex.style          = CS_HREDRAW | CS_VREDRAW;
-    wcex.lpfnWndProc    = WndProc;
+    wcex.lpfnWndProc    = proc;
     wcex.cbClsExtra     = 0;
     wcex.cbWndExtra     = 0;
     wcex.hInstance      = hInstance;
@@ -101,7 +108,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
     wcex.lpszMenuName   = nullptr;
-    wcex.lpszClassName  = szWindowClass;
+    wcex.lpszClassName  = name;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
     return RegisterClassExW(&wcex);
@@ -125,6 +132,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       0, 0, 1600, 900, nullptr, nullptr, hInstance, nullptr);
 
+   /*HWND hWndTool = CreateWindowW(L"Tool", szTitle, WS_OVERLAPPEDWINDOW,
+       0, 0, 1600, 900, nullptr, nullptr, hInstance, nullptr);*/
+
    // GdiPlus 초기화
    Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
 
@@ -138,6 +148,16 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
+
+   /*RECT rect = { 0,0,1600,900 };
+   AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+   SetWindowPos(hWndTool
+       , nullptr, 1280, 0
+       , rect.right - rect.left
+       , rect.bottom - rect.top
+       , 0);
+   ShowWindow(hWndTool, nCmdShow);
+   UpdateWindow(hWndTool);*/
 
    return TRUE;
 }
@@ -189,7 +209,64 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     }
     return 0;
 }
-
+//LRESULT CALLBACK WndToolProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+//{
+//    switch (message)
+//    {
+//    case WM_COMMAND:
+//    {
+//        int wmId = LOWORD(wParam);
+//        // 메뉴 선택을 구문 분석합니다:
+//        switch (wmId)
+//        {
+//        case IDM_ABOUT:
+//            DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+//            break;
+//        case IDM_EXIT:
+//            DestroyWindow(hWnd);
+//            break;
+//        default:
+//            return DefWindowProc(hWnd, message, wParam, lParam);
+//        }
+//    }
+//    break;
+//    case WM_LBUTTONDOWN:
+//    {
+//        POINT mousePos = {};
+//        GetCursorPos(&mousePos);
+//        ScreenToClient(hWnd, &mousePos);
+//
+//        int idxX = mousePos.x / (TILE_WIDTH);
+//        int idxY = mousePos.y / (TILE_HEIGHT);
+//
+//        jm::Tile::mSelectedX = idxX;
+//        jm::Tile::mSelectedY = idxY;
+//    }
+//    break;
+//    case WM_PAINT:
+//    {
+//        PAINTSTRUCT ps;
+//        HDC hdc = BeginPaint(hWnd, &ps);
+//        // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
+//        jm::Texture* stage = jm::Resources::Find<jm::Texture>(L"chapter01");
+//        
+//        TransparentBlt(hdc
+//            , 0, 0, stage->GetWidth(), stage->GetHeight()
+//            , stage->GetHdc()
+//            , 0, 0, stage->GetWidth(), stage->GetHeight()
+//            , RGB(255, 0, 255));
+//
+//        EndPaint(hWnd, &ps);
+//    }
+//    break;
+//    case WM_DESTROY:
+//        PostQuitMessage(0);
+//        break;
+//    default:
+//        return DefWindowProc(hWnd, message, wParam, lParam);
+//    }
+//    return 0;
+//}
 // 정보 대화 상자의 메시지 처리기입니다.
 INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
